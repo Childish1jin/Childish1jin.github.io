@@ -134,18 +134,17 @@
 
 
 
-  <meta name="description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
-<meta name="keywords" content="ML">
+  <meta name="description" content="mysql (内连接，外连接，左连接，右连接，自连接）学习记录  内连接只显示连接过程中交叉的部分 select * from A a inner join B b on a.id = b.id  左连接右连接同属于外连接  select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录 `sele">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MNIST数据集的读取">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/MNIST数据集的读取/index.html">
+<meta property="og:title" content="Barry&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/Mysql学习记录/index.html">
 <meta property="og:site_name" content="Barry&#39;s blog">
-<meta property="og:description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
+<meta property="og:description" content="mysql (内连接，外连接，左连接，右连接，自连接）学习记录  内连接只显示连接过程中交叉的部分 select * from A a inner join B b on a.id = b.id  左连接右连接同属于外连接  select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录 `sele">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-12T08:27:18.471Z">
+<meta property="og:updated_time" content="2019-07-12T12:37:05.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MNIST数据集的读取">
-<meta name="twitter:description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
+<meta name="twitter:title" content="Barry&#39;s blog">
+<meta name="twitter:description" content="mysql (内连接，外连接，左连接，右连接，自连接）学习记录  内连接只显示连接过程中交叉的部分 select * from A a inner join B b on a.id = b.id  左连接右连接同属于外连接  select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录 `sele">
 
 
 
@@ -155,7 +154,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/MNIST数据集的读取/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/Mysql学习记录/">
 
 
 
@@ -165,7 +164,7 @@
   };
 </script>
 
-  <title>MNIST数据集的读取 | Barry's blog</title>
+  <title> | Barry's blog</title>
   
 
 
@@ -405,7 +404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/MNIST数据集的读取/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Mysql学习记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -422,7 +421,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MNIST数据集的读取
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -448,7 +447,7 @@
                 
               
 
-              <time title="创建时间：2019-07-12 11:38:04 / 修改时间：16:27:18" itemprop="dateCreated datePublished" datetime="2019-07-12T11:38:04+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 20:37:04 / 修改时间：20:37:05" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:04+08:00">2019-07-12</time>
             </span>
           
 
@@ -458,21 +457,6 @@
             
           
 
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -507,9 +491,19 @@
       
 
       
-        <ul>
-<li>下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import fetch_mldata</span><br><span class="line"></span><br><span class="line">mnist = fetch_mldata(&apos;mnist-original&apos;, data_home = &apos;/home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data&apos;)</span><br><span class="line"></span><br><span class="line">X = mnist[&apos;data&apos;]</span><br><span class="line">y = mnist[&apos;target&apos;]</span><br><span class="line">print(X)</span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y)</span><br></pre></td></tr></table></figure>
-
+        <p> <strong>mysql (内连接，外连接，左连接，右连接，自连接）学习记录</strong></p>
+<ul>
+<li><p>内连接只显示连接过程中交叉的部分</p>
+<p><code>select * from A a inner join B b on a.id = b.id</code></p>
+<ul>
+<li>左连接右连接同属于外连接</li>
+</ul>
+<p><code>select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录</code></p>
+<pre><code>`select *  from A a right join B b on a.id = b.id   -- 显示右表全部记录以及左右表同时存在的记录`</code></pre></li>
+<li><p>为现有表添加主键</p>
+<p>  <code>alter table my_contacts</code><br>  <code>add column contact_id int not null auto_increment first,</code><br>  <code>add primary key (contact_id);</code></p>
+</li>
+<li><p>使用CASE表达式来Update<br><code>update movie_table</code><br><code>set category =</code><br><code>case</code><br><code>when drama = &#39;T&#39; then  &#39;drama&#39;</code><br><code>when comedy = &#39;T&#39; then &#39;comedy&#39;</code><br><code>else &#39;misc</code><br><code>end;</code></p>
 </li>
 </ul>
 
@@ -537,15 +531,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/ML/" rel="tag"># ML</a>
-          
-        </div>
-      
 
       
       
@@ -555,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/07/12/Tips (1)/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -565,7 +550,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/12/T/" rel="prev" title>
+              <a href="/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             

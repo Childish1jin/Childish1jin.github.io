@@ -134,18 +134,17 @@
 
 
 
-  <meta name="description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
-<meta name="keywords" content="ML">
+  <meta name="description" content="Ubuntu 18.01 重装mysql   删除mysql 123 #sudo apt autoremove mysql-server #sudo apt  remove mysql-common#dpkg -l |grep ^rc|awk &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; |sudo xargs dpkg -P  安装 mysql 123#sudo apt in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MNIST数据集的读取">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/MNIST数据集的读取/index.html">
+<meta property="og:title" content="Barry&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/Tips (2)/index.html">
 <meta property="og:site_name" content="Barry&#39;s blog">
-<meta property="og:description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
+<meta property="og:description" content="Ubuntu 18.01 重装mysql   删除mysql 123 #sudo apt autoremove mysql-server #sudo apt  remove mysql-common#dpkg -l |grep ^rc|awk &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; |sudo xargs dpkg -P  安装 mysql 123#sudo apt in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-12T08:27:18.471Z">
+<meta property="og:updated_time" content="2019-07-12T12:37:55.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MNIST数据集的读取">
-<meta name="twitter:description" content="下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&amp;apos;mnist-original&amp;apos;, data_home = &amp;">
+<meta name="twitter:title" content="Barry&#39;s blog">
+<meta name="twitter:description" content="Ubuntu 18.01 重装mysql   删除mysql 123 #sudo apt autoremove mysql-server #sudo apt  remove mysql-common#dpkg -l |grep ^rc|awk &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; |sudo xargs dpkg -P  安装 mysql 123#sudo apt in">
 
 
 
@@ -155,7 +154,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/MNIST数据集的读取/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/Tips (2)/">
 
 
 
@@ -165,7 +164,7 @@
   };
 </script>
 
-  <title>MNIST数据集的读取 | Barry's blog</title>
+  <title> | Barry's blog</title>
   
 
 
@@ -405,7 +404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/MNIST数据集的读取/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips (2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -422,7 +421,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MNIST数据集的读取
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -448,31 +447,12 @@
                 
               
 
-              <time title="创建时间：2019-07-12 11:38:04 / 修改时间：16:27:18" itemprop="dateCreated datePublished" datetime="2019-07-12T11:38:04+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 20:37:55" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:55+08:00">2019-07-12</time>
             </span>
           
 
           
-            
 
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -507,8 +487,16 @@
       
 
       
-        <ul>
-<li>下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import fetch_mldata</span><br><span class="line"></span><br><span class="line">mnist = fetch_mldata(&apos;mnist-original&apos;, data_home = &apos;/home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data&apos;)</span><br><span class="line"></span><br><span class="line">X = mnist[&apos;data&apos;]</span><br><span class="line">y = mnist[&apos;target&apos;]</span><br><span class="line">print(X)</span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y)</span><br></pre></td></tr></table></figure>
+        <p>Ubuntu 18.01 重装mysql </p>
+<ul>
+<li><p>删除mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> #sudo apt autoremove mysql-server</span><br><span class="line"> #sudo apt  remove mysql-common</span><br><span class="line">#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt install mysql-server</span><br><span class="line">#sudo apt install mysql-client</span><br><span class="line">#sudo apt install php5-mysql                   php和mysql连接</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若提示Package has no installation candidate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install php5-mysql</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -537,15 +525,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/ML/" rel="tag"># ML</a>
-          
-        </div>
-      
 
       
       
@@ -555,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/07/12/Google colab Tips2/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -565,7 +544,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/12/T/" rel="prev" title>
+              <a href="/2019/07/12/Google Colab使用 一/" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             
