@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-07-12T08:27:37.233Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/12/MNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96/</loc>
     
-    <lastmod>2019-07-12T03:38:12.091Z</lastmod>
+    <lastmod>2019-07-12T08:27:18.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-07-12T08:26:34.086Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2019-07-12T08:23:15.497Z</lastmod>
     
   </url>
   

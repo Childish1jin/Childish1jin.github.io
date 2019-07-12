@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[MNIST数据集的读取]]></title>
+    <url>%2F2019%2F07%2F12%2FMNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96%2F</url>
+    <content type="text"><![CDATA[下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下123456789101112from sklearn.datasets import fetch_mldatamnist = fetch_mldata(&apos;mnist-original&apos;, data_home = &apos;/home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data&apos;)X = mnist[&apos;data&apos;]y = mnist[&apos;target&apos;]print(X)print(y)from sklearn.model_selection import train_test_splitX_train,X_test,y_train,y_test = train_test_split(X,y)]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>ML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F07%2F12%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>

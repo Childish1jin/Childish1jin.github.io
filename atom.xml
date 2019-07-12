@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Barry&#39;s blog</title>
   
-  
+  <subtitle>Run!!!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-12T03:38:12.091Z</updated>
+  <updated>2019-07-12T08:27:18.471Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Barry Wang</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>MNIST数据集的读取</title>
     <link href="http://yoursite.com/2019/07/12/MNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96/"/>
     <id>http://yoursite.com/2019/07/12/MNIST数据集的读取/</id>
     <published>2019-07-12T03:38:04.442Z</published>
-    <updated>2019-07-12T03:38:12.091Z</updated>
+    <updated>2019-07-12T08:27:18.471Z</updated>
     
     <content type="html"><![CDATA[<ul><li>下载MNIST 数据集，并保存到home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data/mldata文件夹下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import fetch_mldata</span><br><span class="line"></span><br><span class="line">mnist = fetch_mldata(&apos;mnist-original&apos;, data_home = &apos;/home/wang/文档/Linux_python/ML/Python_ml test/MNIST_data&apos;)</span><br><span class="line"></span><br><span class="line">X = mnist[&apos;data&apos;]</span><br><span class="line">y = mnist[&apos;target&apos;]</span><br><span class="line">print(X)</span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y)</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="ML" scheme="http://yoursite.com/tags/ML/"/>
     
   </entry>
   
