@@ -44,22 +44,23 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>Tips(2)</title>
     <link href="http://yoursite.com/2019/07/12/Tips%20(2)/"/>
     <id>http://yoursite.com/2019/07/12/Tips (2)/</id>
     <published>2019-07-12T12:37:55.075Z</published>
-    <updated>2019-07-12T12:37:55.840Z</updated>
+    <updated>2019-07-28T06:43:24.672Z</updated>
     
-    <content type="html"><![CDATA[<p>Ubuntu 18.01 重装mysql </p><ul><li><p>删除mysql</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> #sudo apt autoremove mysql-server</span><br><span class="line"> #sudo apt  remove mysql-common</span><br><span class="line">#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure></li><li><p>安装 mysql</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt install mysql-server</span><br><span class="line">#sudo apt install mysql-client</span><br><span class="line">#sudo apt install php5-mysql                   php和mysql连接</span><br></pre></td></tr></table></figure></li><li><p>若提示Package has no installation candidate</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install php5-mysql</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    <content type="html"><![CDATA[<hr><p>﻿Ubuntu 18.01 重装mysql </p><ul><li><p>删除mysql</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> #sudo apt autoremove mysql-server</span><br><span class="line"> #sudo apt  remove mysql-common</span><br><span class="line">#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure></li><li><p>安装 mysql</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt install mysql-server</span><br><span class="line">#sudo apt install mysql-client</span><br><span class="line">#sudo apt install php5-mysql                   php和mysql连接</span><br></pre></td></tr></table></figure></li><li><p>若提示Package has no installation candidate</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install php5-mysql</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Ubuntu 18.01 重装mysql &lt;/p&gt;
+        &lt;hr&gt;
+&lt;p&gt;﻿Ubuntu 18.01 重装mysql &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;删除mysql&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;l
       
     
     </summary>

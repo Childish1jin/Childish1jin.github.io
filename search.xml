@@ -6,7 +6,7 @@
     <content type="text"><![CDATA[本地运行借助 Colaboratory，使用 Jupyter 连接到本地运行时 本机安装Jupyter 安装并启用jupyter_http_over_ws jupyter 扩展程序 12pip install jupyter_http_over_wsjupyter serverextension enable --py jupyter_http_over_ws 启动服务器并进行身份验证 1234jupyter notebook \ --NotebookApp.allow_origin=&apos;https://colab.research.google.com&apos; \ --port=8888 \ --NotebookApp.port_retries=0 在 Colaboratory 中，点击“连接”按钮，然后选择“连接到本地运行时…”。在随即显示的对话框中输入上一步中的端口，然后点击“连接”按钮。完成此操作后，您应该就已经连接到本地运行时了。 Google Colab 123from google.colab import files files.upload()files.download()]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title><![CDATA[Tips(2)]]></title>
     <url>%2F2019%2F07%2F12%2FTips%20(2)%2F</url>
     <content type="text"><![CDATA[Ubuntu 18.01 重装mysql 删除mysql 123 #sudo apt autoremove mysql-server #sudo apt remove mysql-common#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P 安装 mysql 123#sudo apt install mysql-server#sudo apt install mysql-client#sudo apt install php5-mysql php和mysql连接 若提示Package has no installation candidate 123sudo apt-get update sudo apt install upgradesudo apt install php5-mysql]]></content>
   </entry>
