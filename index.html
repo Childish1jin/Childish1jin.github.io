@@ -404,6 +404,720 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/query8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/28/query8/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-28 20:40:13 / 修改时间：20:38:03" itemprop="dateCreated datePublished" datetime="2019-07-28T20:40:13+08:00">2019-07-28</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://sqlfiddle.com/#!9/ba8aa5/9" target="_blank" rel="noopener">SQL Fiddle</a></p>
+<p><strong>MySQL 5.6 Schema Setup</strong>:</p>
+<pre><code>/* ��ϰ��1-1���������ݵ����ֵ����ϰ��1-1-3Ҳ���õ��� */
+CREATE TABLE Greatests
+(k CHAR(1) PRIMARY KEY,
+ x   INTEGER NOT NULL,
+ y   INTEGER NOT NULL,
+ z   INTEGER NOT NULL);
+
+INSERT INTO Greatests VALUES(&apos;A&apos;, 1, 2, 3);
+INSERT INTO Greatests VALUES(&apos;B&apos;, 5, 5, 2);
+INSERT INTO Greatests VALUES(&apos;C&apos;, 4, 7, 1);
+INSERT INTO Greatests VALUES(&apos;D&apos;, 3, 3, 8);</code></pre><p><strong>Query 1</strong>:</p>
+<pre><code>/* �ѡ�������Ҳ�����ڽ����(p.288) */
+SELECT k,
+       CASE key
+         WHEN &apos;B&apos; THEN 1
+         WHEN &apos;A&apos; THEN 2
+         WHEN &apos;D&apos; THEN 3
+         WHEN &apos;C&apos; THEN 4
+         ELSE NULL END AS sort_col
+  FROM Greatests
+ ORDER BY sort_col</code></pre><p><strong><a href="http://sqlfiddle.com/#!9/ba8aa5/9/0" target="_blank" rel="noopener">Results</a></strong>:</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/query6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/28/query6/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-28 20:40:13 / 修改时间：19:42:47" itemprop="dateCreated datePublished" datetime="2019-07-28T20:40:13+08:00">2019-07-28</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://sqlfiddle.com/#!9/ba8aa5/1" target="_blank" rel="noopener">SQL Fiddle</a></p>
+<p><strong>MySQL 5.6 Schema Setup</strong>:</p>
+<pre><code>/* ��ϰ��1-1���������ݵ����ֵ����ϰ��1-1-3Ҳ���õ��� */
+CREATE TABLE Greatests
+(k CHAR(1) PRIMARY KEY,
+ x   INTEGER NOT NULL,
+ y   INTEGER NOT NULL,
+ z   INTEGER NOT NULL);
+
+INSERT INTO Greatests VALUES(&apos;A&apos;, 1, 2, 3);
+INSERT INTO Greatests VALUES(&apos;B&apos;, 5, 5, 2);
+INSERT INTO Greatests VALUES(&apos;C&apos;, 4, 7, 1);
+INSERT INTO Greatests VALUES(&apos;D&apos;, 3, 3, 8);</code></pre><p><strong>Query 1</strong>:</p>
+<pre><code>SELECT k, case when case when x &lt; y then y else x end  &lt; z then z 
+else case when x &lt; y then y else x end 
+end as greatset 
+from greatests</code></pre><p><strong><a href="http://sqlfiddle.com/#!9/ba8aa5/1/0" target="_blank" rel="noopener">Results</a></strong>:</p>
+<pre><code>| k | greatset |
+|---|----------|
+| A |        3 |
+| B |        5 |
+| C |        7 |
+| D |        8 |</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/query5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/28/query5/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-28 20:40:13 / 修改时间：19:24:04" itemprop="dateCreated datePublished" datetime="2019-07-28T20:40:13+08:00">2019-07-28</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://sqlfiddle.com/#!9/e2f12/19" target="_blank" rel="noopener">SQL Fiddle</a></p>
+<p><strong>MySQL 5.6 Schema Setup</strong>:</p>
+<pre><code>/* ��CASE����ʽ��ʹ�þۺϺ��� */
+CREATE TABLE StudentClub
+(std_id  INTEGER,
+ club_id INTEGER,
+ club_name VARCHAR(32),
+ main_club_flg CHAR(1),
+ PRIMARY KEY (std_id, club_id));
+
+INSERT INTO StudentClub VALUES(100, 1, &apos;����&apos;,        &apos;Y&apos;);
+INSERT INTO StudentClub VALUES(100, 2, &apos;������&apos;,      &apos;N&apos;);
+INSERT INTO StudentClub VALUES(200, 2, &apos;������&apos;,      &apos;N&apos;);
+INSERT INTO StudentClub VALUES(200, 3, &apos;��ë��&apos;,&apos;Y&apos;);
+INSERT INTO StudentClub VALUES(200, 4, &apos;����&apos;,    &apos;N&apos;);
+INSERT INTO StudentClub VALUES(300, 4, &apos;����&apos;,    &apos;N&apos;);
+INSERT INTO StudentClub VALUES(400, 5, &apos;��Ӿ&apos;,        &apos;N&apos;);
+INSERT INTO StudentClub VALUES(500, 6, &apos;Χ��&apos;,        &apos;N&apos;);</code></pre><p><strong>Query 1</strong>:</p>
+<pre><code>SELECT
+    std_id,
+CASE
+
+        WHEN COUNT( * ) = 1 -- ֻ������һ�����ŵ�ѧ��
+    THEN
+            MAX( club_id ) ELSE MAX( CASE WHEN main_club_flg = &apos;Y&apos; THEN club_id ELSE NULL END ) 
+            END AS main_club 
+    FROM
+        StudentClub 
+GROUP BY
+    std_id</code></pre><p><strong><a href="http://sqlfiddle.com/#!9/e2f12/19/0" target="_blank" rel="noopener">Results</a></strong>:</p>
+<pre><code>| std_id | main_club |
+|--------|-----------|
+|    100 |         1 |
+|    200 |         3 |
+|    300 |         4 |
+|    400 |         5 |
+|    500 |         6 |</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/query7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/28/query7/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-28 20:40:13 / 修改时间：20:39:34" itemprop="dateCreated datePublished" datetime="2019-07-28T20:40:13+08:00">2019-07-28</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://sqlfiddle.com/#!9/383142/4" target="_blank" rel="noopener">SQL Fiddle</a></p>
+<p><strong>MySQL 5.6 Schema Setup</strong>:</p>
+<pre><code>/* ��һ��SQL�����в�ͬ������ͳ�� */
+CREATE TABLE PopTbl2
+(pref_name VARCHAR(32),
+ sex CHAR(1) NOT NULL,
+ population INTEGER NOT NULL,
+    PRIMARY KEY(pref_name, sex));
+
+INSERT INTO PopTbl2 VALUES(&apos;�µ�&apos;, &apos;1&apos;,    60 );
+INSERT INTO PopTbl2 VALUES(&apos;�µ�&apos;, &apos;2&apos;,    40 );
+INSERT INTO PopTbl2 VALUES(&apos;�㴨&apos;, &apos;1&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;�㴨&apos;, &apos;2&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;1&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;2&apos;,    50 );
+INSERT INTO PopTbl2 VALUES(&apos;��֪&apos;, &apos;1&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;��֪&apos;, &apos;2&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;1&apos;,    100);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;2&apos;,    200);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;1&apos;,    20 );
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;2&apos;,    80 );
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;1&apos;,    125);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;2&apos;,    125);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;1&apos;,    250);
+INSERT INTO PopTbl2 VALUES(&apos;����&apos;, &apos;2&apos;,    150);</code></pre><p><strong>Query 1</strong>:</p>
+<pre><code>SELECT sex ,sum(population) as &apos;ȫ��&apos;, 
+ SUM(CASE WHEN pref_name = &apos;�µ�&apos; THEN population ELSE 0 END) AS col_1,
+       SUM(CASE WHEN pref_name = &apos;�㴨&apos; THEN population ELSE 0 END) AS col_2,
+       SUM(CASE WHEN pref_name = &apos;����&apos; THEN population ELSE 0 END) AS col_3,
+       SUM(CASE WHEN pref_name = &apos;��֪&apos; THEN population ELSE 0 END) AS col_4,
+       SUM(CASE WHEN pref_name IN (&apos;�µ�&apos;, &apos;�㴨&apos;, &apos;����&apos;, &apos;��֪&apos;)
+                THEN population ELSE 0 END) AS zaijie
+  FROM PopTbl2
+ GROUP BY sex</code></pre><p><strong><a href="http://sqlfiddle.com/#!9/383142/4/0" target="_blank" rel="noopener">Results</a></strong>:</p>
+<pre><code>| sex |  ȫ�� | col_1 | col_2 | col_3 | col_4 | zaijie |
+|-----|-----|-------|-------|-------|-------|--------|
+|   1 | 855 |    60 |   100 |   100 |   100 |    360 |
+|   2 | 845 |    40 |   100 |    50 |   100 |    290 |</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/query3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1498,678 +2212,6 @@ SELECT CM.course_name,
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Google colab Tips2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Google colab Tips2/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:37:34 / 修改时间：20:37:35" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:34+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>挂载Drive </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drive </span><br><span class="line">drive.mount(&apos;/content/drive&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>接着打开链接输入授权码</p>
-<ul>
-<li>虚拟机文件下载</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files </span><br><span class="line">files.download(&apos;file&quot;)        # 同理，file.upload()</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Navicat Tips/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:37:25 / 修改时间：20:37:26" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:25+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Ubuntu18安装Navicat乱码解决办法</strong></p>
-<ul>
-<li>启动 <code>./start_navicat</code> </li>
-</ul>
-<ul>
-<li><p>解决字符乱码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">locale -a </span><br><span class="line">export LANG=zh_CN.utf8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>软件内仍存在乱码解决办法<br>工具—选项—常规—-界面字体 粘贴为Noto Sans Mono CJK TC Regular，保存并推出重启即可<br><img src="https://img-blog.csdnimg.cn/2019051410353624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:37:15" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:15+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>ERROR 1698 (28000): Access denied for user ‘root’@’localhost’</strong><br>转载自<a href="https://blog.csdn.net/qq_39866513/article/details/85957170" target="_blank" rel="noopener">学习</a></p>
-<ul>
-<li>进入以下文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>在如下位置，加入skip-grant-tables<img src="https://img-blog.csdnimg.cn/20190514132350270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存并退出。</p>
-<ul>
-<li><p>重启mysql<br><code>service mysql restart</code></p>
-</li>
-<li><p>重新进入mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set authentication_string=password(”你的密码“）where user=&quot;root&quot;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190514133708985.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>再次进入mysql</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如下修改</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">select user,plugin from user;</span><br></pre></td></tr></table></figure>
-
-<p>从图中可以看到在执行了select user,plugin from user后，错误原因是因为plugin root的字段是auth_socket，那我们改掉它为下面的mysql_native_password就行了。<br><img src="https://img-blog.csdnimg.cn/20190514133928827.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update user set authentication_string=password(&apos;你的密码&apos;),plugin=&apos;mysql_natice_password&apos; where user=&apos;root&apos;;</span><br><span class="line">select user,plugin from user;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>此时有<br><img src="https://img-blog.csdnimg.cn/20190514134218173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>最后注释掉之前的输入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190514134303607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>此时即可正常进入mysql</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Mysql学习记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Mysql学习记录/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:37:04 / 修改时间：20:37:05" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:04+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> <strong>mysql (内连接，外连接，左连接，右连接，自连接）学习记录</strong></p>
-<ul>
-<li><p>内连接只显示连接过程中交叉的部分</p>
-<p><code>select * from A a inner join B b on a.id = b.id</code></p>
-<ul>
-<li>左连接右连接同属于外连接</li>
-</ul>
-<p><code>select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录</code></p>
-<pre><code>`select *  from A a right join B b on a.id = b.id   -- 显示右表全部记录以及左右表同时存在的记录`</code></pre></li>
-<li><p>为现有表添加主键</p>
-<p>  <code>alter table my_contacts</code><br>  <code>add column contact_id int not null auto_increment first,</code><br>  <code>add primary key (contact_id);</code></p>
-</li>
-<li><p>使用CASE表达式来Update<br><code>update movie_table</code><br><code>set category =</code><br><code>case</code><br><code>when drama = &#39;T&#39; then  &#39;drama&#39;</code><br><code>when comedy = &#39;T&#39; then &#39;comedy&#39;</code><br><code>else &#39;misc</code><br><code>end;</code></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2257,7 +2299,7 @@ SELECT CM.course_name,
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
