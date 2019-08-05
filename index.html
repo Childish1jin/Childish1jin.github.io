@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-08-05 10:57:02 / 修改时间：10:55:42" itemprop="dateCreated datePublished" datetime="2019-08-05T10:57:02+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-05 11:55:52 / 修改时间：11:59:00" itemprop="dateCreated datePublished" datetime="2019-08-05T11:55:52+08:00">2019-08-05</time>
             </span>
           
 
@@ -495,7 +495,10 @@
       
         
           
-            <h1 id="特征理解"><a href="#特征理解" class="headerlink" title="特征理解"></a>特征理解</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">%matplotlib inline </span><br><span class="line">plt.style.use(<span class="string">'fivethirtyeight'</span>)</span><br></pre></td></tr></table></figure>
+            <hr>
+<p>title: Chapter 2<br>categories: feature project<br>tags: 特征工程入门与实践</p>
+<hr>
+<h1 id="特征理解"><a href="#特征理解" class="headerlink" title="特征理解"></a>特征理解</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">%matplotlib inline </span><br><span class="line">plt.style.use(<span class="string">'fivethirtyeight'</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges = pd.read_csv(<span class="string">'Salary_Ranges_by_Job_Classification.csv'</span>)</span><br></pre></td></tr></table></figure>
 
@@ -1279,10 +1282,10 @@ Name: Grade, dtype: int64</code></pre><ul>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>].value_counts().sort_values(ascending = <span class="literal">False</span>).head(<span class="number">20</span>).plot(kind = <span class="string">'bar'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_17_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115038575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>].value_counts().sort_values(ascending = <span class="literal">False</span>).head(<span class="number">5</span>).plot(kind = <span class="string">'pie'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_18_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115016513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-bTIygytA-1564974207418)(output_18_0.png)\]"></p>
 <h1 id="定序等级"><a href="#定序等级" class="headerlink" title="定序等级"></a>定序等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!cd</span><br></pre></td></tr></table></figure>
 
 <pre><code>E:\Python\特征工程入门与实践</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">customer = pd.read_csv(<span class="string">'data/2013_SFO_Customer_survey.csv'</span>)</span><br></pre></td></tr></table></figure>
@@ -1309,13 +1312,13 @@ top          4
 freq      1066
 Name: Q7A_ART, dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'pie'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_26_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115054956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-oOtAsyWI-1564974207420)(output_26_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'bar'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_27_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115108835.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-DNsgOvdF-1564974207421)(output_27_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'box'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_28_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115120405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-nl2fs8D7-1564974207423)(output_28_0.png)\]"></p>
 <h1 id="定序等级-1"><a href="#定序等级-1" class="headerlink" title="定序等级"></a>定序等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate = pd.read_csv(<span class="string">'data/GlobalLandTemperaturesByCity.csv'</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate.head()</span><br></pre></td></tr></table></figure>
@@ -1503,7 +1506,7 @@ Latitude                         0
 Longitude                        0
 dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'AverageTemperature'</span>].hist();</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_35_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115137317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-D8bKoUqv-1564974207425)(output_35_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'AverageTemperature'</span>].mean()</span><br></pre></td></tr></table></figure>
 
 <pre><code>16.727432636247972</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'dt'</span>] = pd.to_datetime(climate[<span class="string">'dt'</span>])</span><br><span class="line">climate[<span class="string">'year'</span>] = climate[<span class="string">'dt'</span>].map(<span class="keyword">lambda</span> x: x.year)</span><br><span class="line">climate_sub_us = climate.loc[climate[<span class="string">'Country'</span>] == <span class="string">'United States'</span>]</span><br></pre></td></tr></table></figure>
@@ -1615,10 +1618,10 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us[<span class="string">'AverageTemperature'</span>].hist(by = climate_sub_us[<span class="string">"century"</span>], sharex = <span class="literal">True</span>, sharey = <span class="literal">True</span>, figsize = (<span class="number">10</span>,<span class="number">10</span>), bins = <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_40_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115150292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-6nmg8ois-1564974207426)(output_40_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'century'</span>)[<span class="string">'AverageTemperature'</span>].mean().plot(kind = <span class="string">'line'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_41_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115159105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-g0ick3he-1564974207427)(output_41_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">century_changes = climate_sub_us.groupby(<span class="string">'century'</span>)[<span class="string">'AverageTemperature'</span>].mean()</span><br><span class="line">century_changes</span><br></pre></td></tr></table></figure>
 
 <pre><code>century
@@ -1630,19 +1633,19 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
 
 <pre><code>3.124449115460754</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = climate_sub_us[<span class="string">'year'</span>]</span><br><span class="line">y = climate_sub_us[<span class="string">'AverageTemperature'</span>]</span><br><span class="line">fig, ax = plt.subplots(figsize = (<span class="number">10</span>,<span class="number">5</span>))</span><br><span class="line">ax.scatter(x,y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_44_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115214123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-l1nlrK4z-1564974207428)(output_44_0.png)\]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'year'</span>).mean()[<span class="string">'AverageTemperature'</span>].plot();</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_45_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115222759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-iFId5A8U-1564974207431)(output_45_0.png)\]"></p>
 <ul>
 <li>使用滑动均值平滑曲线</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'year'</span>).mean()[<span class="string">'AverageTemperature'</span>].rolling(<span class="number">10</span>).mean().plot();</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_47_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190805115230335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-NOOJdipq-1564974207433)(output_47_0.png)\]"></p>
 <h1 id="定比等级"><a href="#定比等级" class="headerlink" title="定比等级"></a>定比等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize = (<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">ax = fig.gca()</span><br><span class="line"></span><br><span class="line">salary_ranges.groupby(<span class="string">'Grade'</span>)[[<span class="string">'Biweekly High Rate'</span>]].mean().sort_values(<span class="string">'Biweekly High Rate'</span>,ascending = <span class="literal">False</span>).head(<span class="number">20</span>).plot.bar(</span><br><span class="line">    stacked = <span class="literal">False</span>, ax= ax, color = <span class="string">'darkorange'</span>);</span><br><span class="line">ax.set_title(<span class="string">'Top 20 Grade by mean Biweekly High Rate'</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="output_49_0.png" alt="png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2019080511524064.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-ewHsDBd8-1564974207436)(output_49_0.png)\]"></p>
 <ul>
 <li>比较工资最高的员工与工资最低员工的差距</li>
 </ul>
@@ -1708,7 +1711,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Google Colab使用 一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Google Colab使用 一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -1728,7 +1731,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Google Colab使用 一/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Google Colab使用 一/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -1875,7 +1878,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Tips (2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips (2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -1895,7 +1898,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Tips (2)/" class="post-title-link" itemprop="url">Tips(2)</a>
+                <a href="/2019/07/12/Tips (2)/" class="post-title-link" itemprop="url">Tips(2)</a>
               
             
           </h1>
@@ -2048,7 +2051,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Google colab Tips2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Google colab Tips2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2068,7 +2071,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Google colab Tips2/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Google colab Tips2/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2208,7 +2211,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Navicat Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2228,7 +2231,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Navicat Tips/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Navicat Tips/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2368,7 +2371,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2388,7 +2391,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2556,7 +2559,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Mysql学习记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Mysql学习记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2576,7 +2579,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Mysql学习记录/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Mysql学习记录/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2720,7 +2723,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Tips (1)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips (1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2740,7 +2743,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Tips (1)/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Tips (1)/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2889,7 +2892,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/用API爬取天气预报数据/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/用API爬取天气预报数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2909,7 +2912,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/用API爬取天气预报数据/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/用API爬取天气预报数据/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -3047,7 +3050,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -3067,7 +3070,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/新建文件夹/Tips/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Tips/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>

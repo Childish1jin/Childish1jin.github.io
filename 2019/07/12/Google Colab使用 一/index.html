@@ -134,17 +134,17 @@
 
 
 
-  <meta name="description" content="挂载Drive   12from google.colab import drive drive.mount(&amp;apos;/content/drive&amp;apos;)  接着打开链接输入授权码  虚拟机文件下载  12from google.colab import files files.download(&amp;apos;file&amp;quot;)        # 同理，file.upload()">
+  <meta name="description" content="本地运行借助 Colaboratory，使用 Jupyter 连接到本地运行时   本机安装Jupyter  安装并启用jupyter_http_over_ws jupyter 扩展程序  12pip install jupyter_http_over_wsjupyter serverextension enable --py jupyter_http_over_ws   启动服务器并进行身份验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Barry&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/新建文件夹/Google colab Tips2/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/Google Colab使用 一/index.html">
 <meta property="og:site_name" content="Barry&#39;s blog">
-<meta property="og:description" content="挂载Drive   12from google.colab import drive drive.mount(&amp;apos;/content/drive&amp;apos;)  接着打开链接输入授权码  虚拟机文件下载  12from google.colab import files files.download(&amp;apos;file&amp;quot;)        # 同理，file.upload()">
+<meta property="og:description" content="本地运行借助 Colaboratory，使用 Jupyter 连接到本地运行时   本机安装Jupyter  安装并启用jupyter_http_over_ws jupyter 扩展程序  12pip install jupyter_http_over_wsjupyter serverextension enable --py jupyter_http_over_ws   启动服务器并进行身份验">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-12T12:37:35.036Z">
+<meta property="og:updated_time" content="2019-07-12T12:38:04.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Barry&#39;s blog">
-<meta name="twitter:description" content="挂载Drive   12from google.colab import drive drive.mount(&amp;apos;/content/drive&amp;apos;)  接着打开链接输入授权码  虚拟机文件下载  12from google.colab import files files.download(&amp;apos;file&amp;quot;)        # 同理，file.upload()">
+<meta name="twitter:description" content="本地运行借助 Colaboratory，使用 Jupyter 连接到本地运行时   本机安装Jupyter  安装并启用jupyter_http_over_ws jupyter 扩展程序  12pip install jupyter_http_over_wsjupyter serverextension enable --py jupyter_http_over_ws   启动服务器并进行身份验">
 
 
 
@@ -154,7 +154,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/新建文件夹/Google colab Tips2/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/Google Colab使用 一/">
 
 
 
@@ -404,7 +404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/新建文件夹/Google colab Tips2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Google Colab使用 一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -447,7 +447,7 @@
                 
               
 
-              <time title="创建时间：2019-07-12 20:37:34 / 修改时间：20:37:35" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:34+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 20:38:03 / 修改时间：20:38:04" itemprop="dateCreated datePublished" datetime="2019-07-12T20:38:03+08:00">2019-07-12</time>
             </span>
           
 
@@ -492,15 +492,22 @@
 
       
         <ul>
-<li>挂载Drive </li>
+<li>本地运行<br>借助 Colaboratory，使用 Jupyter 连接到本地运行时</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drive </span><br><span class="line">drive.mount(&apos;/content/drive&apos;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>本机安装Jupyter </li>
+<li>安装并启用jupyter_http_over_ws jupyter 扩展程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
 
-<p>接着打开链接输入授权码</p>
-<ul>
-<li>虚拟机文件下载</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files </span><br><span class="line">files.download(&apos;file&quot;)        # 同理，file.upload()</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>启动服务器并进行身份验证</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook \</span><br><span class="line">  --NotebookApp.allow_origin=&apos;https://colab.research.google.com&apos; \</span><br><span class="line">  --port=8888 \</span><br><span class="line">  --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+
+<p>在 Colaboratory 中，点击“连接”按钮，然后选择“连接到本地运行时…”。在随即显示的对话框中输入上一步中的端口，然后点击“连接”按钮。完成此操作后，您应该就已经连接到本地运行时了。</p>
+<p><a href="https://research.google.com/colaboratory/local-runtimes.html" target="_blank" rel="noopener">Google Colab</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files </span><br><span class="line">files.upload()</span><br><span class="line">files.download()</span><br></pre></td></tr></table></figure>
 
 
       
@@ -536,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/新建文件夹/Navicat Tips/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/07/12/Tips (2)/" rel="next" title="Tips(2)">
+                <i class="fa fa-chevron-left"></i> Tips(2)
               </a>
             
           </div>
@@ -546,8 +553,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/12/新建文件夹/Tips (2)/" rel="prev" title="Tips(2)">
-                Tips(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/05/Chapter2/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
