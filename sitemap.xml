@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/08/09/Mxnet%E6%89%8B%E5%86%99%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</loc>
+    <loc>http://yoursite.com/2019/07/12/MNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96/</loc>
     
-    <lastmod>2019-08-09T02:39:07.615Z</lastmod>
+    <lastmod>2019-08-09T03:25:14.716Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/05/Chapter2/</loc>
+    <loc>http://yoursite.com/2019/07/12/Mysql%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2019-08-05T03:59:00.767Z</lastmod>
+    <lastmod>2019-08-09T03:24:08.654Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/12/Mysql%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    
+    <lastmod>2019-08-09T03:21:45.239Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/12/Google%20colab%20Tips2/</loc>
+    
+    <lastmod>2019-08-09T03:20:35.835Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/05/%E3%80%90%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5%E3%80%91Chapter%202/</loc>
+    
+    <lastmod>2019-08-09T03:15:12.588Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/09/Mxnet%E6%89%8B%E5%86%99%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</loc>
+    
+    <lastmod>2019-08-09T03:13:42.100Z</lastmod>
     
   </url>
   
@@ -26,41 +54,6 @@
     <loc>http://yoursite.com/2019/07/12/%E7%94%A8API%E7%88%AC%E5%8F%96%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E6%95%B0%E6%8D%AE/</loc>
     
     <lastmod>2019-07-12T15:21:31.508Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/Google%20Colab%E4%BD%BF%E7%94%A8%20%E4%B8%80/</loc>
-    
-    <lastmod>2019-07-12T12:38:04.567Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/Google%20colab%20Tips2/</loc>
-    
-    <lastmod>2019-07-12T12:37:35.036Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/Navicat%20Tips/</loc>
-    
-    <lastmod>2019-07-12T12:37:26.163Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/Navicat%20Tips2%20%20%20%20ERROR%201698%20(28000)_%20Access%20denied%20for%20user%20'root'@'localhost'/</loc>
-    
-    <lastmod>2019-07-12T12:37:15.917Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/Mysql%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    
-    <lastmod>2019-07-12T12:37:05.135Z</lastmod>
     
   </url>
   
@@ -89,13 +82,6 @@
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2019-07-12T08:27:37.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/12/MNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96/</loc>
-    
-    <lastmod>2019-07-12T08:27:18.471Z</lastmod>
     
   </url>
   

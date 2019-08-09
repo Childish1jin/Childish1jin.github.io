@@ -134,17 +134,18 @@
 
 
 
-  <meta name="description" content="title: Mxnet手写线性回归categories: Machine Learningtags:   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960# 生成数据集num_inputs = 2num_examples">
+  <meta name="description" content="123456789101112131415161718192021222324252627# 生成数据集num_inputs = 2num_examples = 1000true_w = [2,-3.4]true_b = 4.2features = nd.random.normal(scale = 1, shape = (num_examples, num_inputs))labels = tru">
+<meta name="keywords" content="MXNET">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Barry&#39;s blog">
+<meta property="og:title" content="Mxnet手写线性回归">
 <meta property="og:url" content="http://yoursite.com/2019/08/09/Mxnet手写线性回归/index.html">
 <meta property="og:site_name" content="Barry&#39;s blog">
-<meta property="og:description" content="title: Mxnet手写线性回归categories: Machine Learningtags:   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960# 生成数据集num_inputs = 2num_examples">
+<meta property="og:description" content="123456789101112131415161718192021222324252627# 生成数据集num_inputs = 2num_examples = 1000true_w = [2,-3.4]true_b = 4.2features = nd.random.normal(scale = 1, shape = (num_examples, num_inputs))labels = tru">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-09T02:39:07.615Z">
+<meta property="og:updated_time" content="2019-08-09T03:13:42.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Barry&#39;s blog">
-<meta name="twitter:description" content="title: Mxnet手写线性回归categories: Machine Learningtags:   123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960# 生成数据集num_inputs = 2num_examples">
+<meta name="twitter:title" content="Mxnet手写线性回归">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627# 生成数据集num_inputs = 2num_examples = 1000true_w = [2,-3.4]true_b = 4.2features = nd.random.normal(scale = 1, shape = (num_examples, num_inputs))labels = tru">
 
 
 
@@ -164,7 +165,7 @@
   };
 </script>
 
-  <title> | Barry's blog</title>
+  <title>Mxnet手写线性回归 | Barry's blog</title>
   
 
 
@@ -421,7 +422,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">Mxnet手写线性回归
 
               
             
@@ -447,7 +448,7 @@
                 
               
 
-              <time title="创建时间：2019-08-09 10:37:49 / 修改时间：10:39:07" itemprop="dateCreated datePublished" datetime="2019-08-09T10:37:49+08:00">2019-08-09</time>
+              <time title="创建时间：2019-08-09 10:37:49 / 修改时间：11:13:42" itemprop="dateCreated datePublished" datetime="2019-08-09T10:37:49+08:00">2019-08-09</time>
             </span>
           
 
@@ -457,6 +458,21 @@
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -491,10 +507,11 @@
       
 
       
-        <hr>
-<p>title: Mxnet手写线性回归<br>categories: Machine Learning<br>tags: </p>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成数据集</span></span><br><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line">true_w = [<span class="number">2</span>,<span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line">features = nd.random.normal(scale = <span class="number">1</span>, shape = (num_examples, num_inputs))</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:,<span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:,<span class="number">1</span>] + true_b</span><br><span class="line">labels += nd.random.normal(scale = <span class="number">0.01</span>, shape = labels.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第二个特征与标签的散点图</span></span><br><span class="line"><span class="comment"># def use_svg_display():</span></span><br><span class="line"><span class="comment">#     display.set_matplotlib_formats('svg')</span></span><br><span class="line"><span class="comment"># def set_figsize(figsize = (3.5,2.5)):</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     use_svg_display()</span></span><br><span class="line"><span class="comment">#     plt.rcParams['figure.figsize'] = figsize</span></span><br><span class="line"><span class="comment"># set_figsize()</span></span><br><span class="line"><span class="comment"># plt.scatter(features[:,1].asnumpy(),labels.asnumpy());</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mini_batch </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter</span><span class="params">(batch_size,features,labels)</span>:</span></span><br><span class="line">    num_examples = len(features)</span><br><span class="line">    indice = list(range(num_examples))</span><br><span class="line">    random.shuffle(indice)       <span class="comment"># 样本的读取顺序随机</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        j = nd.array(indice[i:min(i + batch_size,num_examples)])</span><br><span class="line">        <span class="keyword">yield</span> features.take(j), labels.take(j)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 初始化模型参数</span></span><br><span class="line">w = nd.random.normal(scale = <span class="number">0.01</span>, shape = (num_inputs, <span class="number">1</span>))</span><br><span class="line">b = nd.zeros(shape = (<span class="number">1</span>,))</span><br><span class="line">w.attach_grad()</span><br><span class="line">b.attach_grad()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linreg</span><span class="params">(X,w,b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (nd.dot(X,w) + b)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">squared_loss</span><span class="params">(y_hat, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (y_hat -y.reshape(y_hat.shape)) **<span class="number">2</span> /<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义优化算法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd</span><span class="params">(params , lr, batch_size)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">        param[:] = param - lr* param.grad / batch_size</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line">lr = <span class="number">0.03</span></span><br><span class="line">num_epochs = <span class="number">3</span></span><br><span class="line">net = linreg</span><br><span class="line">loss = squared_loss</span><br><span class="line">batch_size = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter(batch_size,features, labels):</span><br><span class="line">        <span class="keyword">with</span> autograd.record():</span><br><span class="line">            l = loss(net(X,w,b),y)</span><br><span class="line">        l.backward()</span><br><span class="line">        sgd([w,b],lr,batch_size)</span><br><span class="line">    train_l = loss(net(features,w,b),labels)</span><br><span class="line">    print(<span class="string">'epoch %d, loss %f'</span> % (epoch +<span class="number">1</span>,train_l.mean().asnumpy()),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成数据集</span></span><br><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line">true_w = [<span class="number">2</span>,<span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line">features = nd.random.normal(scale = <span class="number">1</span>, shape = (num_examples, num_inputs))</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:,<span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:,<span class="number">1</span>] + true_b</span><br><span class="line">labels += nd.random.normal(scale = <span class="number">0.01</span>, shape = labels.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第二个特征与标签的散点图</span></span><br><span class="line"><span class="comment"># def use_svg_display():</span></span><br><span class="line"><span class="comment">#     display.set_matplotlib_formats('svg')</span></span><br><span class="line"><span class="comment"># def set_figsize(figsize = (3.5,2.5)):</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     use_svg_display()</span></span><br><span class="line"><span class="comment">#     plt.rcParams['figure.figsize'] = figsize</span></span><br><span class="line"><span class="comment"># set_figsize()</span></span><br><span class="line"><span class="comment"># plt.scatter(features[:,1].asnumpy(),labels.asnumpy());</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mini_batch </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter</span><span class="params">(batch_size,features,labels)</span>:</span></span><br><span class="line">    num_examples = len(features)</span><br><span class="line">    indice = list(range(num_examples))</span><br><span class="line">    random.shuffle(indice)       <span class="comment"># 样本的读取顺序随机</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        j = nd.array(indice[i:min(i + batch_size,num_examples)])</span><br><span class="line">        <span class="keyword">yield</span> features.take(j), labels.take(j)</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化模型参数</span></span><br><span class="line"></span><br><span class="line">w = nd.random.normal(scale = <span class="number">0.01</span>, shape = (num_inputs, <span class="number">1</span>))</span><br><span class="line">b = nd.zeros(shape = (<span class="number">1</span>,))</span><br><span class="line">w.attach_grad()</span><br><span class="line">b.attach_grad()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linreg</span><span class="params">(X,w,b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (nd.dot(X,w) + b)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">squared_loss</span><span class="params">(y_hat, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (y_hat -y.reshape(y_hat.shape)) **<span class="number">2</span> /<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义优化算法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd</span><span class="params">(params , lr, batch_size)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">        param[:] = param - lr* param.grad / batch_size</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line"></span><br><span class="line">lr = <span class="number">0.03</span></span><br><span class="line">num_epochs = <span class="number">3</span></span><br><span class="line">net = linreg</span><br><span class="line">loss = squared_loss</span><br><span class="line">batch_size = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter(batch_size,features, labels):</span><br><span class="line">        <span class="keyword">with</span> autograd.record():</span><br><span class="line">            l = loss(net(X,w,b),y)</span><br><span class="line">        l.backward()</span><br><span class="line">        sgd([w,b],lr,batch_size)</span><br><span class="line">    train_l = loss(net(features,w,b),labels)</span><br><span class="line">    print(<span class="string">'epoch %d, loss %f'</span> % (epoch +<span class="number">1</span>,train_l.mean().asnumpy()),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -521,6 +538,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/MXNET/" rel="tag"># MXNET</a>
+          
+        </div>
+      
 
       
       
@@ -530,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/05/Chapter2/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/08/05/【特征工程入门与实践】Chapter 2/" rel="next" title="【特征工程入门与实践】Chapter 2">
+                <i class="fa fa-chevron-left"></i> 【特征工程入门与实践】Chapter 2
               </a>
             
           </div>
@@ -639,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -654,7 +680,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -669,7 +697,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

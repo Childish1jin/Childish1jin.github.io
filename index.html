@@ -424,7 +424,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/09/Mxnet手写线性回归/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/08/09/Mxnet手写线性回归/" class="post-title-link" itemprop="url">Mxnet手写线性回归</a>
               
             
           </h1>
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-08-09 10:37:49 / 修改时间：10:39:07" itemprop="dateCreated datePublished" datetime="2019-08-09T10:37:49+08:00">2019-08-09</time>
+              <time title="创建时间：2019-08-09 10:37:49 / 修改时间：11:13:42" itemprop="dateCreated datePublished" datetime="2019-08-09T10:37:49+08:00">2019-08-09</time>
             </span>
           
 
@@ -459,6 +459,21 @@
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -494,14 +509,16 @@
 
       
         
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成数据集</span></span><br><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line">true_w = [<span class="number">2</span>,<span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line">features = nd.random.normal(scale = <span class="number">1</span>, shape = (num_examples, num_inputs))</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:,<span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:,<span class="number">1</span>] + true_b</span><br><span class="line">labels += nd.random.normal(scale = <span class="number">0.01</span>, shape = labels.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第二个特征与标签的散点图</span></span><br><span class="line"><span class="comment"># def use_svg_display():</span></span><br><span class="line"><span class="comment">#     display.set_matplotlib_formats('svg')</span></span><br><span class="line"><span class="comment"># def set_figsize(figsize = (3.5,2.5)):</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     use_svg_display()</span></span><br><span class="line"><span class="comment">#     plt.rcParams['figure.figsize'] = figsize</span></span><br><span class="line"><span class="comment"># set_figsize()</span></span><br><span class="line"><span class="comment"># plt.scatter(features[:,1].asnumpy(),labels.asnumpy());</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mini_batch </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter</span><span class="params">(batch_size,features,labels)</span>:</span></span><br><span class="line">    num_examples = len(features)</span><br><span class="line">    indice = list(range(num_examples))</span><br><span class="line">    random.shuffle(indice)       <span class="comment"># 样本的读取顺序随机</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        j = nd.array(indice[i:min(i + batch_size,num_examples)])</span><br><span class="line">        <span class="keyword">yield</span> features.take(j), labels.take(j)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <hr>
-<p>title: Mxnet手写线性回归<br>categories: Machine Learning<br>tags: </p>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成数据集</span></span><br><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line">true_w = [<span class="number">2</span>,<span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line">features = nd.random.normal(scale = <span class="number">1</span>, shape = (num_examples, num_inputs))</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:,<span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:,<span class="number">1</span>] + true_b</span><br><span class="line">labels += nd.random.normal(scale = <span class="number">0.01</span>, shape = labels.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第二个特征与标签的散点图</span></span><br><span class="line"><span class="comment"># def use_svg_display():</span></span><br><span class="line"><span class="comment">#     display.set_matplotlib_formats('svg')</span></span><br><span class="line"><span class="comment"># def set_figsize(figsize = (3.5,2.5)):</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     use_svg_display()</span></span><br><span class="line"><span class="comment">#     plt.rcParams['figure.figsize'] = figsize</span></span><br><span class="line"><span class="comment"># set_figsize()</span></span><br><span class="line"><span class="comment"># plt.scatter(features[:,1].asnumpy(),labels.asnumpy());</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mini_batch </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter</span><span class="params">(batch_size,features,labels)</span>:</span></span><br><span class="line">    num_examples = len(features)</span><br><span class="line">    indice = list(range(num_examples))</span><br><span class="line">    random.shuffle(indice)       <span class="comment"># 样本的读取顺序随机</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        j = nd.array(indice[i:min(i + batch_size,num_examples)])</span><br><span class="line">        <span class="keyword">yield</span> features.take(j), labels.take(j)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 初始化模型参数</span></span><br><span class="line">w = nd.random.normal(scale = <span class="number">0.01</span>, shape = (num_inputs, <span class="number">1</span>))</span><br><span class="line">b = nd.zeros(shape = (<span class="number">1</span>,))</span><br><span class="line">w.attach_grad()</span><br><span class="line">b.attach_grad()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linreg</span><span class="params">(X,w,b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (nd.dot(X,w) + b)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">squared_loss</span><span class="params">(y_hat, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (y_hat -y.reshape(y_hat.shape)) **<span class="number">2</span> /<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义优化算法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd</span><span class="params">(params , lr, batch_size)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">        param[:] = param - lr* param.grad / batch_size</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line">lr = <span class="number">0.03</span></span><br><span class="line">num_epochs = <span class="number">3</span></span><br><span class="line">net = linreg</span><br><span class="line">loss = squared_loss</span><br><span class="line">batch_size = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter(batch_size,features, labels):</span><br><span class="line">        <span class="keyword">with</span> autograd.record():</span><br><span class="line">            l = loss(net(X,w,b),y)</span><br><span class="line">        l.backward()</span><br><span class="line">        sgd([w,b],lr,batch_size)</span><br><span class="line">    train_l = loss(net(features,w,b),labels)</span><br><span class="line">    print(<span class="string">'epoch %d, loss %f'</span> % (epoch +<span class="number">1</span>,train_l.mean().asnumpy()),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/09/Mxnet手写线性回归/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -558,7 +575,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/Chapter2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/【特征工程入门与实践】Chapter 2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -578,7 +595,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/05/Chapter2/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/08/05/【特征工程入门与实践】Chapter 2/" class="post-title-link" itemprop="url">【特征工程入门与实践】Chapter 2</a>
               
             
           </h1>
@@ -603,7 +620,7 @@
                 
               
 
-              <time title="创建时间：2019-08-05 11:55:52 / 修改时间：11:59:00" itemprop="dateCreated datePublished" datetime="2019-08-05T11:55:52+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-05 11:55:52" itemprop="dateCreated datePublished" datetime="2019-08-05T11:55:52+08:00">2019-08-05</time>
             </span>
           
 
@@ -611,8 +628,33 @@
             
 
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-09 11:15:12" itemprop="dateModified" datetime="2019-08-09T11:15:12+08:00">2019-08-09</time>
+              </span>
+            
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/feature-project/" itemprop="url" rel="index"><span itemprop="name">feature project</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -648,1334 +690,20 @@
 
       
         
-          
-            <hr>
-<p>title: Chapter 2<br>categories: feature project<br>tags: 特征工程入门与实践</p>
-<hr>
-<h1 id="特征理解"><a href="#特征理解" class="headerlink" title="特征理解"></a>特征理解</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">%matplotlib inline </span><br><span class="line">plt.style.use(<span class="string">'fivethirtyeight'</span>)</span><br></pre></td></tr></table></figure>
+          <h1 id="特征理解"><a href="#特征理解" class="headerlink" title="特征理解"></a>特征理解</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">%matplotlib inline </span><br><span class="line">plt.style.use(<span class="string">'fivethirtyeight'</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges = pd.read_csv(<span class="string">'Salary_Ranges_by_Job_Classification.csv'</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.head()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SetID</th>
-      <th>Job Code</th>
-      <th>Eff Date</th>
-      <th>Sal End Date</th>
-      <th>Salary SetID</th>
-      <th>Sal Plan</th>
-      <th>Grade</th>
-      <th>Step</th>
-      <th>Biweekly High Rate</th>
-      <th>Biweekly Low Rate</th>
-      <th>Union Code</th>
-      <th>Extended Step</th>
-      <th>Pay Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>COMMN</td>
-      <td>0109</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>$0.00</td>
-      <td>$0.00</td>
-      <td>330</td>
-      <td>0</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>COMMN</td>
-      <td>0110</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>$15.00</td>
-      <td>$15.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>COMMN</td>
-      <td>0111</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>$25.00</td>
-      <td>$25.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>COMMN</td>
-      <td>0112</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>$50.00</td>
-      <td>$50.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>COMMN</td>
-      <td>0114</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>$100.00</td>
-      <td>$100.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.columns</span><br></pre></td></tr></table></figure>
-
-<pre><code>Index([&apos;SetID&apos;, &apos;Job Code&apos;, &apos;Eff Date&apos;, &apos;Sal End Date&apos;, &apos;Salary SetID&apos;,
-       &apos;Sal Plan&apos;, &apos;Grade&apos;, &apos;Step&apos;, &apos;Biweekly High Rate&apos;, &apos;Biweekly Low Rate&apos;,
-       &apos;Union Code&apos;, &apos;Extended Step&apos;, &apos;Pay Type&apos;],
-      dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.info()</span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
-RangeIndex: 1356 entries, 0 to 1355
-Data columns (total 13 columns):
-SetID                 1356 non-null object
-Job Code              1356 non-null object
-Eff Date              1356 non-null object
-Sal End Date          1356 non-null object
-Salary SetID          1356 non-null object
-Sal Plan              1356 non-null object
-Grade                 1356 non-null object
-Step                  1356 non-null int64
-Biweekly High Rate    1356 non-null object
-Biweekly Low Rate     1356 non-null object
-Union Code            1356 non-null int64
-Extended Step         1356 non-null int64
-Pay Type              1356 non-null object
-dtypes: int64(3), object(10)
-memory usage: 137.8+ KB</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.isnull().sum()</span><br></pre></td></tr></table></figure>
-
-<pre><code>SetID                 0
-Job Code              0
-Eff Date              0
-Sal End Date          0
-Salary SetID          0
-Sal Plan              0
-Grade                 0
-Step                  0
-Biweekly High Rate    0
-Biweekly Low Rate     0
-Union Code            0
-Extended Step         0
-Pay Type              0
-dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.describe()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Step</th>
-      <th>Union Code</th>
-      <th>Extended Step</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1356.000000</td>
-      <td>1356.000000</td>
-      <td>1356.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1.294985</td>
-      <td>392.676991</td>
-      <td>0.150442</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>1.045816</td>
-      <td>338.100562</td>
-      <td>1.006734</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>1.000000</td>
-      <td>21.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1.000000</td>
-      <td>351.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>1.000000</td>
-      <td>790.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>5.000000</td>
-      <td>990.000000</td>
-      <td>11.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[[<span class="string">'Biweekly High Rate'</span>,<span class="string">'Grade'</span>]]</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Biweekly High Rate</th>
-      <th>Grade</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>$0.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>$15.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>$25.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>$50.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>$100.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>$100.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>$200.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>$500.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>$0.00</td>
-      <td>00000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>$10630.00</td>
-      <td>0140F</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>$9175.00</td>
-      <td>0150F</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>$4142.00</td>
-      <td>0170F</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>$5242.00</td>
-      <td>0180F</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>$3293.00</td>
-      <td>0190F</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>$4496.00</td>
-      <td>0380F</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>$4676.00</td>
-      <td>0381F</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>$4762.00</td>
-      <td>0382F</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>$11255.00</td>
-      <td>0390F</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>$10376.00</td>
-      <td>0395F</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>$9096.00</td>
-      <td>0400F</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>$9456.00</td>
-      <td>0401F</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>$9641.00</td>
-      <td>0402F</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>$7392.00</td>
-      <td>0488F</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>$7687.00</td>
-      <td>0489F</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>$7835.00</td>
-      <td>0490F</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>$3794.62</td>
-      <td>0720F</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>$1326.00</td>
-      <td>05475</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>$1425.00</td>
-      <td>05625</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>$1532.00</td>
-      <td>05775</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>$1646.00</td>
-      <td>05925</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1326</th>
-      <td>$4857.00</td>
-      <td>Q37H0</td>
-    </tr>
-    <tr>
-      <th>1327</th>
-      <td>$4586.00</td>
-      <td>Q50H0</td>
-    </tr>
-    <tr>
-      <th>1328</th>
-      <td>$4770.00</td>
-      <td>Q51H0</td>
-    </tr>
-    <tr>
-      <th>1329</th>
-      <td>$4857.00</td>
-      <td>Q52H0</td>
-    </tr>
-    <tr>
-      <th>1330</th>
-      <td>$5237.00</td>
-      <td>Q60H0</td>
-    </tr>
-    <tr>
-      <th>1331</th>
-      <td>$5445.00</td>
-      <td>Q61H0</td>
-    </tr>
-    <tr>
-      <th>1332</th>
-      <td>$5548.00</td>
-      <td>Q62H0</td>
-    </tr>
-    <tr>
-      <th>1333</th>
-      <td>$6616.00</td>
-      <td>Q80H0</td>
-    </tr>
-    <tr>
-      <th>1334</th>
-      <td>$6881.00</td>
-      <td>Q81H0</td>
-    </tr>
-    <tr>
-      <th>1335</th>
-      <td>$7011.00</td>
-      <td>Q82H0</td>
-    </tr>
-    <tr>
-      <th>1336</th>
-      <td>$6515.00</td>
-      <td>Q90H0</td>
-    </tr>
-    <tr>
-      <th>1337</th>
-      <td>$2178.00</td>
-      <td>06500</td>
-    </tr>
-    <tr>
-      <th>1338</th>
-      <td>$2342.00</td>
-      <td>06650</td>
-    </tr>
-    <tr>
-      <th>1339</th>
-      <td>$2700.00</td>
-      <td>06940</td>
-    </tr>
-    <tr>
-      <th>1340</th>
-      <td>$2354.00</td>
-      <td>06660</td>
-    </tr>
-    <tr>
-      <th>1341</th>
-      <td>$3234.00</td>
-      <td>07310</td>
-    </tr>
-    <tr>
-      <th>1342</th>
-      <td>$1909.00</td>
-      <td>06230</td>
-    </tr>
-    <tr>
-      <th>1343</th>
-      <td>$2332.00</td>
-      <td>06640</td>
-    </tr>
-    <tr>
-      <th>1344</th>
-      <td>$2459.00</td>
-      <td>06750</td>
-    </tr>
-    <tr>
-      <th>1345</th>
-      <td>$2354.00</td>
-      <td>06660</td>
-    </tr>
-    <tr>
-      <th>1346</th>
-      <td>$3199.00</td>
-      <td>07290</td>
-    </tr>
-    <tr>
-      <th>1347</th>
-      <td>$3426.00</td>
-      <td>07430</td>
-    </tr>
-    <tr>
-      <th>1348</th>
-      <td>$3689.00</td>
-      <td>07580</td>
-    </tr>
-    <tr>
-      <th>1349</th>
-      <td>$1951.00</td>
-      <td>06275</td>
-    </tr>
-    <tr>
-      <th>1350</th>
-      <td>$2786.00</td>
-      <td>07005</td>
-    </tr>
-    <tr>
-      <th>1351</th>
-      <td>$2145.00</td>
-      <td>06470</td>
-    </tr>
-    <tr>
-      <th>1352</th>
-      <td>$3041.00</td>
-      <td>07185</td>
-    </tr>
-    <tr>
-      <th>1353</th>
-      <td>$3132.00</td>
-      <td>07245</td>
-    </tr>
-    <tr>
-      <th>1354</th>
-      <td>$3453.00</td>
-      <td>07445</td>
-    </tr>
-    <tr>
-      <th>1355</th>
-      <td>$3453.00</td>
-      <td>07445</td>
-    </tr>
-  </tbody>
-</table>
-<p>1356 rows × 2 columns</p>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Biweekly High Rate'</span>] = salary_ranges[<span class="string">'Biweekly High Rate'</span>].map(<span class="keyword">lambda</span> x : x.replace(<span class="string">'$'</span>,<span class="string">''</span>))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Biweekly High Rate'</span>]</span><br></pre></td></tr></table></figure>
-
-<pre><code>0           0.00
-1          15.00
-2          25.00
-3          50.00
-4         100.00
-5         100.00
-6         200.00
-7         500.00
-8           0.00
-9       10630.00
-10       9175.00
-11       4142.00
-12       5242.00
-13       3293.00
-14       4496.00
-15       4676.00
-16       4762.00
-17      11255.00
-18      10376.00
-19       9096.00
-20       9456.00
-21       9641.00
-22       7392.00
-23       7687.00
-24       7835.00
-25       3794.62
-26       1326.00
-27       1425.00
-28       1532.00
-29       1646.00
-          ...   
-1326     4857.00
-1327     4586.00
-1328     4770.00
-1329     4857.00
-1330     5237.00
-1331     5445.00
-1332     5548.00
-1333     6616.00
-1334     6881.00
-1335     7011.00
-1336     6515.00
-1337     2178.00
-1338     2342.00
-1339     2700.00
-1340     2354.00
-1341     3234.00
-1342     1909.00
-1343     2332.00
-1344     2459.00
-1345     2354.00
-1346     3199.00
-1347     3426.00
-1348     3689.00
-1349     1951.00
-1350     2786.00
-1351     2145.00
-1352     3041.00
-1353     3132.00
-1354     3453.00
-1355     3453.00
-Name: Biweekly High Rate, Length: 1356, dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Biweekly High Rate'</span>] = salary_ranges[<span class="string">'Biweekly High Rate'</span>].astype(float)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>] = salary_ranges[<span class="string">'Grade'</span>].astype(str)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges.head()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SetID</th>
-      <th>Job Code</th>
-      <th>Eff Date</th>
-      <th>Sal End Date</th>
-      <th>Salary SetID</th>
-      <th>Sal Plan</th>
-      <th>Grade</th>
-      <th>Step</th>
-      <th>Biweekly High Rate</th>
-      <th>Biweekly Low Rate</th>
-      <th>Union Code</th>
-      <th>Extended Step</th>
-      <th>Pay Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>COMMN</td>
-      <td>0109</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>$0.00</td>
-      <td>330</td>
-      <td>0</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>COMMN</td>
-      <td>0110</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>15.0</td>
-      <td>$15.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>COMMN</td>
-      <td>0111</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>25.0</td>
-      <td>$25.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>COMMN</td>
-      <td>0112</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>50.0</td>
-      <td>$50.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>D</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>COMMN</td>
-      <td>0114</td>
-      <td>07/01/2009 12:00:00 AM</td>
-      <td>06/30/2010 12:00:00 AM</td>
-      <td>COMMN</td>
-      <td>SFM</td>
-      <td>00000</td>
-      <td>1</td>
-      <td>100.0</td>
-      <td>$100.00</td>
-      <td>323</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-<h1 id="定类等级"><a href="#定类等级" class="headerlink" title="定类等级"></a>定类等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>].value_counts().head()</span><br></pre></td></tr></table></figure>
-
-<pre><code>00000    61
-07450    12
-06870     9
-07420     9
-07170     9
-Name: Grade, dtype: int64</code></pre><ul>
-<li>柱状图</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>].value_counts().sort_values(ascending = <span class="literal">False</span>).head(<span class="number">20</span>).plot(kind = <span class="string">'bar'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115038575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary_ranges[<span class="string">'Grade'</span>].value_counts().sort_values(ascending = <span class="literal">False</span>).head(<span class="number">5</span>).plot(kind = <span class="string">'pie'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115016513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-bTIygytA-1564974207418)(output_18_0.png)\]"></p>
-<h1 id="定序等级"><a href="#定序等级" class="headerlink" title="定序等级"></a>定序等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!cd</span><br></pre></td></tr></table></figure>
-
-<pre><code>E:\Python\特征工程入门与实践</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">customer = pd.read_csv(<span class="string">'data/2013_SFO_Customer_survey.csv'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">customer.shape</span><br></pre></td></tr></table></figure>
-
-<pre><code>(3535, 95)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">art_ratings = customer[<span class="string">'Q7A_ART'</span>]</span><br><span class="line">art_ratings.describe()</span><br></pre></td></tr></table></figure>
-
-<pre><code>count    3535.000000
-mean        4.300707
-std         1.341445
-min         0.000000
-25%         3.000000
-50%         4.000000
-75%         5.000000
-max         6.000000
-Name: Q7A_ART, dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings = art_ratings[(art_ratings &gt; <span class="number">1</span>) &amp; (art_ratings &lt;= <span class="number">5</span>)]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">art_ratings = art_ratings.astype(str)</span><br><span class="line">art_ratings.describe()</span><br></pre></td></tr></table></figure>
-
-<pre><code>count     2636
-unique       4
-top          4
-freq      1066
-Name: Q7A_ART, dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'pie'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115054956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-oOtAsyWI-1564974207420)(output_26_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'bar'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115108835.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-DNsgOvdF-1564974207421)(output_27_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">art_ratings.value_counts().plot(kind = <span class="string">'box'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115120405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-nl2fs8D7-1564974207423)(output_28_0.png)\]"></p>
-<h1 id="定序等级-1"><a href="#定序等级-1" class="headerlink" title="定序等级"></a>定序等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate = pd.read_csv(<span class="string">'data/GlobalLandTemperaturesByCity.csv'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate.head()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dt</th>
-      <th>AverageTemperature</th>
-      <th>AverageTemperatureUncertainty</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1743-11-01</td>
-      <td>6.068</td>
-      <td>1.737</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1743-12-01</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1744-01-01</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1744-02-01</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1744-03-01</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移除缺失值</span></span><br><span class="line">climate.dropna(axis = <span class="number">0</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate.head()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dt</th>
-      <th>AverageTemperature</th>
-      <th>AverageTemperatureUncertainty</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1743-11-01</td>
-      <td>6.068</td>
-      <td>1.737</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1744-04-01</td>
-      <td>5.788</td>
-      <td>3.624</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1744-05-01</td>
-      <td>10.644</td>
-      <td>1.283</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1744-06-01</td>
-      <td>14.051</td>
-      <td>1.347</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1744-07-01</td>
-      <td>16.082</td>
-      <td>1.396</td>
-      <td>Århus</td>
-      <td>Denmark</td>
-      <td>57.05N</td>
-      <td>10.33E</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate.isnull().sum()</span><br></pre></td></tr></table></figure>
-
-<pre><code>dt                               0
-AverageTemperature               0
-AverageTemperatureUncertainty    0
-City                             0
-Country                          0
-Latitude                         0
-Longitude                        0
-dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'AverageTemperature'</span>].hist();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115137317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-D8bKoUqv-1564974207425)(output_35_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'AverageTemperature'</span>].mean()</span><br></pre></td></tr></table></figure>
-
-<pre><code>16.727432636247972</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">climate[<span class="string">'dt'</span>] = pd.to_datetime(climate[<span class="string">'dt'</span>])</span><br><span class="line">climate[<span class="string">'year'</span>] = climate[<span class="string">'dt'</span>].map(<span class="keyword">lambda</span> x: x.year)</span><br><span class="line">climate_sub_us = climate.loc[climate[<span class="string">'Country'</span>] == <span class="string">'United States'</span>]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us[<span class="string">'century'</span>] = climate_sub_us[<span class="string">'year'</span>].map(<span class="keyword">lambda</span> x : int(x/<span class="number">100</span> + <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>D:\Anaconda\lib\site-packages\ipykernel_launcher.py:1: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  &quot;&quot;&quot;Entry point for launching an IPython kernel.</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.head()</span><br></pre></td></tr></table></figure>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dt</th>
-      <th>AverageTemperature</th>
-      <th>AverageTemperatureUncertainty</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>year</th>
-      <th>century</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>47555</th>
-      <td>1820-01-01</td>
-      <td>2.101</td>
-      <td>3.217</td>
-      <td>Abilene</td>
-      <td>United States</td>
-      <td>32.95N</td>
-      <td>100.53W</td>
-      <td>1820</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>47556</th>
-      <td>1820-02-01</td>
-      <td>6.926</td>
-      <td>2.853</td>
-      <td>Abilene</td>
-      <td>United States</td>
-      <td>32.95N</td>
-      <td>100.53W</td>
-      <td>1820</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>47557</th>
-      <td>1820-03-01</td>
-      <td>10.767</td>
-      <td>2.395</td>
-      <td>Abilene</td>
-      <td>United States</td>
-      <td>32.95N</td>
-      <td>100.53W</td>
-      <td>1820</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>47558</th>
-      <td>1820-04-01</td>
-      <td>17.989</td>
-      <td>2.202</td>
-      <td>Abilene</td>
-      <td>United States</td>
-      <td>32.95N</td>
-      <td>100.53W</td>
-      <td>1820</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>47559</th>
-      <td>1820-05-01</td>
-      <td>21.809</td>
-      <td>2.036</td>
-      <td>Abilene</td>
-      <td>United States</td>
-      <td>32.95N</td>
-      <td>100.53W</td>
-      <td>1820</td>
-      <td>19</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us[<span class="string">'AverageTemperature'</span>].hist(by = climate_sub_us[<span class="string">"century"</span>], sharex = <span class="literal">True</span>, sharey = <span class="literal">True</span>, figsize = (<span class="number">10</span>,<span class="number">10</span>), bins = <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115150292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-6nmg8ois-1564974207426)(output_40_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'century'</span>)[<span class="string">'AverageTemperature'</span>].mean().plot(kind = <span class="string">'line'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115159105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-g0ick3he-1564974207427)(output_41_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">century_changes = climate_sub_us.groupby(<span class="string">'century'</span>)[<span class="string">'AverageTemperature'</span>].mean()</span><br><span class="line">century_changes</span><br></pre></td></tr></table></figure>
-
-<pre><code>century
-18    12.073243
-19    13.662870
-20    14.386622
-21    15.197692
-Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">century_changes[<span class="number">21</span>] - century_changes[<span class="number">18</span>]</span><br></pre></td></tr></table></figure>
-
-<pre><code>3.124449115460754</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = climate_sub_us[<span class="string">'year'</span>]</span><br><span class="line">y = climate_sub_us[<span class="string">'AverageTemperature'</span>]</span><br><span class="line">fig, ax = plt.subplots(figsize = (<span class="number">10</span>,<span class="number">5</span>))</span><br><span class="line">ax.scatter(x,y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115214123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-l1nlrK4z-1564974207428)(output_44_0.png)\]"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'year'</span>).mean()[<span class="string">'AverageTemperature'</span>].plot();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115222759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-iFId5A8U-1564974207431)(output_45_0.png)\]"></p>
-<ul>
-<li>使用滑动均值平滑曲线</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">climate_sub_us.groupby(<span class="string">'year'</span>).mean()[<span class="string">'AverageTemperature'</span>].rolling(<span class="number">10</span>).mean().plot();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190805115230335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-NOOJdipq-1564974207433)(output_47_0.png)\]"></p>
-<h1 id="定比等级"><a href="#定比等级" class="headerlink" title="定比等级"></a>定比等级</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize = (<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">ax = fig.gca()</span><br><span class="line"></span><br><span class="line">salary_ranges.groupby(<span class="string">'Grade'</span>)[[<span class="string">'Biweekly High Rate'</span>]].mean().sort_values(<span class="string">'Biweekly High Rate'</span>,ascending = <span class="literal">False</span>).head(<span class="number">20</span>).plot.bar(</span><br><span class="line">    stacked = <span class="literal">False</span>, ax= ax, color = <span class="string">'darkorange'</span>);</span><br><span class="line">ax.set_title(<span class="string">'Top 20 Grade by mean Biweekly High Rate'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/2019080511524064.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-ewHsDBd8-1564974207436)(output_49_0.png)\]"></p>
-<ul>
-<li>比较工资最高的员工与工资最低员工的差距</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sorted_df = salary_ranges.groupby(<span class="string">'Grade'</span>)[[<span class="string">'Biweekly High Rate'</span>]].mean().sort_values(<span class="string">'Biweekly High Rate'</span>,ascending = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sorted_df.iloc[<span class="number">0</span>][<span class="number">0</span>] / sorted_df.iloc[<span class="number">-1</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-
-<pre><code>13.931919540229886</code></pre>
+          <!--noindex-->
           
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Google Colab使用 一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Google Colab使用 一/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/05/【特征工程入门与实践】Chapter 2/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:38:03 / 修改时间：20:38:04" itemprop="dateCreated datePublished" datetime="2019-07-12T20:38:03+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>本地运行<br>借助 Colaboratory，使用 Jupyter 连接到本地运行时</li>
-</ul>
-<ol>
-<li>本机安装Jupyter </li>
-<li>安装并启用jupyter_http_over_ws jupyter 扩展程序</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>启动服务器并进行身份验证</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook \</span><br><span class="line">  --NotebookApp.allow_origin=&apos;https://colab.research.google.com&apos; \</span><br><span class="line">  --port=8888 \</span><br><span class="line">  --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
-
-<p>在 Colaboratory 中，点击“连接”按钮，然后选择“连接到本地运行时…”。在随即显示的对话框中输入上一步中的端口，然后点击“连接”按钮。完成此操作后，您应该就已经连接到本地运行时了。</p>
-<p><a href="https://research.google.com/colaboratory/local-runtimes.html" target="_blank" rel="noopener">Google Colab</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files </span><br><span class="line">files.upload()</span><br><span class="line">files.download()</span><br></pre></td></tr></table></figure>
-
-
-          
+          <!--/noindex-->
         
       
     </div>
@@ -2133,22 +861,26 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
       
         
           
-            <hr>
-<p>﻿Ubuntu 18.01 重装mysql </p>
-<ul>
-<li><p>删除mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> #sudo apt autoremove mysql-server</span><br><span class="line"> #sudo apt  remove mysql-common</span><br><span class="line">#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt install mysql-server</span><br><span class="line">#sudo apt install mysql-client</span><br><span class="line">#sudo apt install php5-mysql                   php和mysql连接</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若提示Package has no installation candidate</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install php5-mysql</span><br></pre></td></tr></table></figure>
+            <p>
+              
+﻿Ubuntu 18.01 重装mysql 
 
-</li>
-</ul>
+删除mysql
+ #sudo apt autoremove mysql-server #sudo apt  remove mysql-common#dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P
 
+安装 mysql
+#sudo apt install mysql-server#sudo apt install mysql-client#sudo apt install php5-mysql                   php和mysql
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Tips (2)/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2225,7 +957,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/Google colab Tips2/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Google colab Tips2/" class="post-title-link" itemprop="url">Google Colab使用2</a>
               
             
           </h1>
@@ -2250,13 +982,23 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
                 
               
 
-              <time title="创建时间：2019-07-12 20:37:34 / 修改时间：20:37:35" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:34+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 20:37:34" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:34+08:00">2019-07-12</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-09 11:20:35" itemprop="dateModified" datetime="2019-08-09T11:20:35+08:00">2019-08-09</time>
+              </span>
             
           
 
@@ -2296,19 +1038,30 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
       
         
           
-            <ul>
-<li>挂载Drive </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drive </span><br><span class="line">drive.mount(&apos;/content/drive&apos;)</span><br></pre></td></tr></table></figure>
+            <p>
+              
+挂载Drive 
 
-<p>接着打开链接输入授权码</p>
-<ul>
-<li>虚拟机文件下载</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files </span><br><span class="line">files.download(&apos;file&quot;)        # 同理，file.upload()</span><br></pre></td></tr></table></figure>
+from google.colab import drive drive.mount(&apos;/content/drive&apos;)
+
+接着打开链接输入授权码
+
+虚拟机文件下载
+
+from google.colab import files files.download(&apos;file&quot;)        # 同理，file.upload()
 
 
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Google colab Tips2/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2365,7 +1118,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Mysql学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -2385,167 +1138,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/Navicat Tips/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 20:37:25 / 修改时间：20:37:26" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:25+08:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Ubuntu18安装Navicat乱码解决办法</strong></p>
-<ul>
-<li>启动 <code>./start_navicat</code> </li>
-</ul>
-<ul>
-<li><p>解决字符乱码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">locale -a </span><br><span class="line">export LANG=zh_CN.utf8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>软件内仍存在乱码解决办法<br>工具—选项—常规—-界面字体 粘贴为Noto Sans Mono CJK TC Regular，保存并推出重启即可<br><img src="https://img-blog.csdnimg.cn/2019051410353624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Barry Wang">
-      <meta itemprop="description" content="run barry, run!">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Barry's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/Navicat Tips2    ERROR 1698 (28000)_ Access denied for user 'root'@'localhost'/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Mysql学习/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -2575,6 +1168,20 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           
 
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-09 11:24:08" itemprop="dateModified" datetime="2019-08-09T11:24:08+08:00">2019-08-09</time>
+              </span>
+            
+          
 
           
 
@@ -2612,51 +1219,36 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
       
         
           
-            <p><strong>ERROR 1698 (28000): Access denied for user ‘root’@’localhost’</strong><br>转载自<a href="https://blog.csdn.net/qq_39866513/article/details/85957170" target="_blank" rel="noopener">学习</a></p>
-<ul>
-<li>进入以下文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
+            <p>
+              
+title:Mysql学习记录2
+tag:Mysql
 
-</li>
-</ul>
-<p>在如下位置，加入skip-grant-tables<img src="https://img-blog.csdnimg.cn/20190514132350270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存并退出。</p>
-<ul>
-<li><p>重启mysql<br><code>service mysql restart</code></p>
-</li>
-<li><p>重新进入mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set authentication_string=password(”你的密码“）where user=&quot;root&quot;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+﻿ERROR 1698 (28000): Access denied for user ‘root’@’localhost’转载自学习
 
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190514133708985.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>再次进入mysql</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如下修改</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">select user,plugin from user;</span><br></pre></td></tr></table></figure>
-
-<p>从图中可以看到在执行了select user,plugin from user后，错误原因是因为plugin root的字段是auth_socket，那我们改掉它为下面的mysql_native_password就行了。<br><img src="https://img-blog.csdnimg.cn/20190514133928827.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update user set authentication_string=password(&apos;你的密码&apos;),plugin=&apos;mysql_natice_password&apos; where user=&apos;root&apos;;</span><br><span class="line">select user,plugin from user;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>此时有<br><img src="https://img-blog.csdnimg.cn/20190514134218173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>最后注释掉之前的输入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190514134303607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>此时即可正常进入mysql</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+进入以下文件sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 
 
+
+在如下位置，加入skip-grant-tables保存并退出。
+
+重启mysqlservice mysql restart
+
+重新进入mysql
+mysql -u root -p
+
+use mysql;update user set authentication_string=password(”
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Mysql学习/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2733,7 +1325,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/Mysql学习记录/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/07/12/Mysql学习记录/" class="post-title-link" itemprop="url">Mysql学习记录</a>
               
             
           </h1>
@@ -2758,13 +1350,23 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
                 
               
 
-              <time title="创建时间：2019-07-12 20:37:04 / 修改时间：20:37:05" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:04+08:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 20:37:04" itemprop="dateCreated datePublished" datetime="2019-07-12T20:37:04+08:00">2019-07-12</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-09 11:21:45" itemprop="dateModified" datetime="2019-08-09T11:21:45+08:00">2019-08-09</time>
+              </span>
             
           
 
@@ -2803,24 +1405,21 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
 
       
         
-          
-            <p> <strong>mysql (内连接，外连接，左连接，右连接，自连接）学习记录</strong></p>
+          <p><strong>mysql (内连接，外连接，左连接，右连接，自连接）学习记录</strong></p>
 <ul>
 <li><p>内连接只显示连接过程中交叉的部分</p>
 <p><code>select * from A a inner join B b on a.id = b.id</code></p>
-<ul>
-<li>左连接右连接同属于外连接</li>
-</ul>
-<p><code>select * from A a left join B b on a.id = b.id           -- 显示左表全部记录以及左右表同时存在的记录</code></p>
-<pre><code>`select *  from A a right join B b on a.id = b.id   -- 显示右表全部记录以及左右表同时存在的记录`</code></pre></li>
-<li><p>为现有表添加主键</p>
-<p>  <code>alter table my_contacts</code><br>  <code>add column contact_id int not null auto_increment first,</code><br>  <code>add primary key (contact_id);</code></p>
-</li>
-<li><p>使用CASE表达式来Update<br><code>update movie_table</code><br><code>set category =</code><br><code>case</code><br><code>when drama = &#39;T&#39; then  &#39;drama&#39;</code><br><code>when comedy = &#39;T&#39; then &#39;comedy&#39;</code><br><code>else &#39;misc</code><br><code>end;</code></p>
 </li>
 </ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Mysql学习记录/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2968,28 +1567,20 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
       
         
           
-            <p><a href="https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/c" target="_blank" rel="noopener">pymongo api</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sheet_weather.update_one(&#123;&apos;_id&apos;: item[&apos;_id&apos;]&#125;,</span><br><span class="line">                                 &#123;&apos;$set&apos;: &#123;&apos;HeWeather6.0.daily_forecast.&#123;&#125;.tmp_min&apos;.format(i): int(tmp)&#125;&#125;)</span><br><span class="line"></span><br><span class="line">sheet_weather.find_one_and_delete(&#123;&apos;_id&apos;:item[&apos;_id&apos;]&#125;,&#123;&apos;HeWeather6.0.daily_forecast.&#123;&#125;.tmp_min&apos;&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>{‘_id’: item[‘_id’]}表示需要更新的查询条件，对应_id字段。第二个参数表示要更新的信息，$set 为MongoDB的一个修改器，用于指定一个键并更新键值，若键不存在则创建一个键</p>
-</li>
-<li><p>常用的修改器还有：</p>
-<ol>
-<li>$inc 可以对文档的某个值为数字型的键进行增减操作</li>
-<li>$unset 用于删除键</li>
-<li>$push向文档的某个数组类型的键添加一个数组元素，不过滤重复的数据。添加时，若键存在，则要求键值类型必须为数组；若键不存在，则创建数组类型的键</li>
-</ol>
-</li>
-<li><p><code>{&#39;$set&#39;: {&#39;HeWeather6.0.daily_forecast.{}.tmp_min&#39;.format(i): int(tmp)}}</code></p>
-</li>
-<li><p><code>url = &#39;https://free-api.heweather.net/s6/weather/forecast?location=&#39;+item[1:14]+&#39;&amp;key=aaaaaaaaaaaaa</code>可以写成</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = &apos;https://free-api.heweather.net/s6/weather/forecast?location=&#123;&#125;&amp;key=aaaa&apos;.format(item[1:14])</span><br></pre></td></tr></table></figure>
-
-
+            <p>
+              pymongo api
+sheet_weather.update_one(&#123;&apos;_id&apos;: item[&apos;_id&apos;]&#125;,                                 &#123;&apos;$set&apos;: &#123;&apos;HeWeather6.0.daily_forecast.&#123;&#125;.tmp_min&apos;.format(i): int(tmp)&#125;&#125;)sheet_weather.find_one_and_delete(&#123;&apos;_id&apos;:
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Tips (1)/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -3137,17 +1728,368 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
       
         
           
-            <h1 id="使用API爬去天气预报数据"><a href="#使用API爬去天气预报数据" class="headerlink" title="使用API爬去天气预报数据"></a><center>使用API爬去天气预报数据</center></h1><hr>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import numpy</span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line"># 加载pymongo</span><br><span class="line">import pymongo</span><br><span class="line"></span><br><span class="line">client = pymongo.MongoClient(&apos;localhost&apos;,27017)</span><br><span class="line">book_weather = client[&apos;weather&apos;]</span><br><span class="line">sheet_weather = book_weather[&apos;sheet_weather_3&apos;]</span><br><span class="line">url = &apos;https://cdn.heweather.com/china-city-list.txt&apos;</span><br><span class="line">strhtml = requests.get(url)</span><br><span class="line">strhtml.encoding = &apos;utf-8&apos;</span><br><span class="line">data = strhtml.text</span><br><span class="line"></span><br><span class="line">data1 = data.split(&apos;\n&apos;)</span><br><span class="line">for i in range(6):</span><br><span class="line">    data1.remove(data1[0])</span><br><span class="line"></span><br><span class="line">for item in data1:</span><br><span class="line">   # url = &apos;https://free-api.weather.com/v5/forecast?city=&apos;+ item[0:11] +&apos;&amp;key=yourownkey&apos;</span><br><span class="line">   url = &apos;https://free-api.heweather.net/s6/weather/forecast?location=&#123;&#125;&amp;key=yourownkey&apos;.format(item[1:14])</span><br><span class="line">   strhtml = requests.get(url)</span><br><span class="line">   # print(strhtml)</span><br><span class="line">   time.sleep(1)</span><br><span class="line">   dic = strhtml.json()</span><br><span class="line">    # 向表写入一条数据</span><br><span class="line">   sheet_weather.insert_one(dic)</span><br><span class="line"></span><br><span class="line">import  pymongo</span><br><span class="line">client = pymongo.MongoClient(&apos;localhost&apos;,27017)</span><br><span class="line">book_weather = client[&apos;weather&apos;]</span><br><span class="line">sheet_weather = book_weather[&apos;sheet_weather_3&apos;]</span><br></pre></td></tr></table></figure>
+            <p>
+              使用API爬去天气预报数据
+Codeimport requestsimport numpyimport reimport time# 加载pymongoimport pymongoclient = pymongo.MongoClient(&apos;localhost&apos;,27017)book_weather = client[&apos;weather&apos;]sheet_weather = book_weather[&apos;sheet_weather_3&apos;]url = &apos;https://cdn.heweather.com/china-city-list.
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/用API爬取天气预报数据/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>查询未来三天最低气温低于5度的地点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import  pymongo</span><br><span class="line">client = pymongo.MongoClient(&apos;localhost&apos;,27017)</span><br><span class="line">book_weather = client[&apos;weather&apos;]</span><br><span class="line">sheet_weather = book_weather[&apos;sheet_weather_3&apos;]</span><br><span class="line"></span><br><span class="line">for item in sheet_weather.find():</span><br><span class="line">    for i in range(3):</span><br><span class="line">       tmp = item[&apos;HeWeather6&apos;][0][&apos;daily_forecast&apos;][i][&apos;tmp_min&apos;]</span><br><span class="line">       sheet_weather.update_one(&#123;&apos;_id&apos;: item[&apos;_id&apos;]&#125;,</span><br><span class="line">                                 &#123;&apos;$set&apos;: &#123;&apos;HeWeather6.0.daily_forecast.&#123;&#125;.tmp_min&apos;.format(i): int(tmp)&#125;&#125;)</span><br><span class="line"></span><br><span class="line">        #sheet_weather.find_one_and_delete(&#123;&apos;_id&apos;:item[&apos;_id&apos;]&#125;,&#123;&apos;HeWeather6.0.daily_forecast.&#123;&#125;.tmp_min&apos;&#125;)</span><br><span class="line"></span><br><span class="line">for item in sheet_weather.find(&#123;&apos;HeWeather6.0.daily_forecast.tmp_min&apos;:&#123;&apos;$gt&apos;:5&#125;&#125;):</span><br><span class="line">    print(item[&apos;HeWeather6&apos;][0][&apos;basic&apos;][&apos;location&apos;])</span><br></pre></td></tr></table></figure>
+    
 
-<ul>
-<li>$lt, $lte, $gt, $gte 分别表示&lt; , &lt;=, &gt;, &gt;=</li>
-</ul>
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/12/Tips/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
 
           
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-12 20:36:31 / 修改时间：20:36:32" itemprop="dateCreated datePublished" datetime="2019-07-12T20:36:31+08:00">2019-07-12</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              以癌症预测为例             0:恶性，1:良性
+
+TP： 真正例，良性被正确预测
+TN：真反例，恶性被正确预测
+FP：假正例，恶性被预测为良性
+FN：假反例，良性被预测为恶性
+
+Accuracy:准确率（TP+TN）/（TP+TN+FP+FN）Precision:查准率    TP/(TP+FP)Recall:查全率    TP/(TP+FN)
+import numpy as np arr = np.arange(12).reshape(3,4)print(arr)a = arr[:,::2]print(a)b = arr[::1,:]print(b)
+
+[[ 0  1  2  3
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/Tips/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/T/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/12/T/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-12 20:36:10 / 修改时间：20:36:13" itemprop="dateCreated datePublished" datetime="2019-07-12T20:36:10+08:00">2019-07-12</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+operator.itemgetter
+  operator sorted = sorted(data,key = operator.itemgetter(n))---operator.itemgetter(n)返回位置n上的元素
+
+zip
+
+`np.c_        np.r_
+
+np.meshgrid`
+
+x = np.arange(1,3,1)
+  y = np.arange(4,8,1)
+  xx,yy = np.meshgrid(x,y)
+  print(xx,yy )
+  print(xx.ravel())
+  print(yy.ravel())
+
+
+x = np.linesp
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/12/T/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -3276,7 +2218,7 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3291,7 +2233,9 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -3306,7 +2250,13 @@ Name: AverageTemperature, dtype: float64</code></pre><figure class="highlight py
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
