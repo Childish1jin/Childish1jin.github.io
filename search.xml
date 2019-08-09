@@ -37,7 +37,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2F2019%2F07%2F12%2FMysql%E5%AD%A6%E4%B9%A0%2F</url>
+    <url>%2F2019%2F07%2F12%2Fnaviat%E5%AD%A6%E4%B9%A0%2F</url>
     <content type="text"><![CDATA[title:Mysql学习记录2 tag:Mysql ERROR 1698 (28000): Access denied for user ‘root’@’localhost’转载自学习 进入以下文件1sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 在如下位置，加入skip-grant-tables保存并退出。 重启mysqlservice mysql restart 重新进入mysql 1mysql -u root -p 123use mysql;update user set authentication_string=password(”你的密码“）where user=&quot;root&quot;;flush privileges; 再次进入mysql 12service mysql restartmysql -u root -p 如下修改 12use mysql;select user,plugin from user; 从图中可以看到在执行了select user,plugin from user后，错误原因是因为plugin root的字段是auth_socket，那我们改掉它为下面的mysql_native_password就行了。 12update user set authentication_string=password(&apos;你的密码&apos;),plugin=&apos;mysql_natice_password&apos; where user=&apos;root&apos;;select user,plugin from user; 此时有 最后注释掉之前的输入 1sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 此时即可正常进入mysql 1mysql -u root -p]]></content>
   </entry>
   <entry>
