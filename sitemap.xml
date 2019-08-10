@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/10/house%20prices%20XGBOOST/</loc>
+    
+    <lastmod>2019-08-10T03:01:11.556Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/12/MNIST%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E8%AF%BB%E5%8F%96/</loc>
     
     <lastmod>2019-08-09T03:25:14.716Z</lastmod>

@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="12import os print(os.listdir(&apos;../input&apos;))  [&amp;apos;sample_submission.csv&amp;apos;, &amp;apos;test.csv&amp;apos;, &amp;apos;data_description.txt&amp;apos;, &amp;apos;train.csv&amp;apos;]1!ls  __notebook_source__.ipynb123456789101">
+<meta name="keywords" content="kaggle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kaggle house prices XGBOOST">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/house prices XGBOOST/index.html">
+<meta property="og:site_name" content="Barry&#39;s blog">
+<meta property="og:description" content="12import os print(os.listdir(&apos;../input&apos;))  [&amp;apos;sample_submission.csv&amp;apos;, &amp;apos;test.csv&amp;apos;, &amp;apos;data_description.txt&amp;apos;, &amp;apos;train.csv&amp;apos;]1!ls  __notebook_source__.ipynb123456789101">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="e:%5CMyblog%5Csource%5Cimages%5Coutput_11_0.png">
+<meta property="og:updated_time" content="2019-08-10T03:01:11.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kaggle house prices XGBOOST">
+<meta name="twitter:description" content="12import os print(os.listdir(&apos;../input&apos;))  [&amp;apos;sample_submission.csv&amp;apos;, &amp;apos;test.csv&amp;apos;, &amp;apos;data_description.txt&amp;apos;, &amp;apos;train.csv&amp;apos;]1!ls  __notebook_source__.ipynb123456789101">
+<meta name="twitter:image" content="e:%5CMyblog%5Csource%5Cimages%5Coutput_11_0.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Barry's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/10/house prices XGBOOST/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>kaggle house prices XGBOOST | Barry's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Barry's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Run!!!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/house prices XGBOOST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">kaggle house prices XGBOOST
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-10 10:55:47 / 修改时间：11:01:11" itemprop="dateCreated datePublished" datetime="2019-08-10T10:55:47+08:00">2019-08-10</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os </span><br><span class="line">print(os.listdir(<span class="string">'../input'</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;sample_submission.csv&apos;, &apos;test.csv&apos;, &apos;data_description.txt&apos;, &apos;train.csv&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!ls</span><br></pre></td></tr></table></figure>
+
+<pre><code>__notebook_source__.ipynb</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(action= <span class="string">'ignore'</span>)</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"><span class="comment">#plt.style.use('fivethirtyeight')</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> mxnet <span class="keyword">import</span> autograd,nd </span><br><span class="line"><span class="keyword">from</span> mxnet.gluon <span class="keyword">import</span> nn,loss <span class="keyword">as</span> gloss,data <span class="keyword">as</span> gdata</span><br><span class="line"><span class="keyword">from</span> mxnet <span class="keyword">import</span> gluon</span><br><span class="line"><span class="comment">#import d2lzh as d2l</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data = pd.read_csv(<span class="string">'../input/train.csv'</span>)</span><br><span class="line">train_data.head()</span><br></pre></td></tr></table></figure>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>MSSubClass</th>
+      <th>MSZoning</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>LotShape</th>
+      <th>LandContour</th>
+      <th>Utilities</th>
+      <th>...</th>
+      <th>PoolArea</th>
+      <th>PoolQC</th>
+      <th>Fence</th>
+      <th>MiscFeature</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SaleType</th>
+      <th>SaleCondition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>65.0</td>
+      <td>8450</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>208500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>80.0</td>
+      <td>9600</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2007</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>181500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>68.0</td>
+      <td>11250</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>9</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>223500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>70</td>
+      <td>RL</td>
+      <td>60.0</td>
+      <td>9550</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Abnorml</td>
+      <td>140000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>84.0</td>
+      <td>14260</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>250000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 81 columns</p>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_data = pd.read_csv(<span class="string">'../input/test.csv'</span>)</span><br><span class="line">test_data.head()</span><br></pre></td></tr></table></figure>
+
+<p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>MSSubClass</th>
+      <th>MSZoning</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>LotShape</th>
+      <th>LandContour</th>
+      <th>Utilities</th>
+      <th>...</th>
+      <th>ScreenPorch</th>
+      <th>PoolArea</th>
+      <th>PoolQC</th>
+      <th>Fence</th>
+      <th>MiscFeature</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SaleType</th>
+      <th>SaleCondition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1461</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>120</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1462</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1463</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1464</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>78.0</td>
+      <td>9978</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1465</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>43.0</td>
+      <td>5005</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>HLS</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>144</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 80 columns</p>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'train shape&#123;&#125;'</span>.format(train_data.shape))</span><br><span class="line">print(<span class="string">'test shape&#123;&#125;'</span>.format(test_data.shape))</span><br></pre></td></tr></table></figure>
+
+<pre><code>train shape(1460, 81)
+test shape(1459, 80)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.isnull().sum()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Id                  0
+MSSubClass          0
+MSZoning            0
+LotFrontage       259
+LotArea             0
+Street              0
+Alley            1369
+LotShape            0
+LandContour         0
+Utilities           0
+LotConfig           0
+LandSlope           0
+Neighborhood        0
+Condition1          0
+Condition2          0
+BldgType            0
+HouseStyle          0
+OverallQual         0
+OverallCond         0
+YearBuilt           0
+YearRemodAdd        0
+RoofStyle           0
+RoofMatl            0
+Exterior1st         0
+Exterior2nd         0
+MasVnrType          8
+MasVnrArea          8
+ExterQual           0
+ExterCond           0
+Foundation          0
+                 ... 
+BedroomAbvGr        0
+KitchenAbvGr        0
+KitchenQual         0
+TotRmsAbvGrd        0
+Functional          0
+Fireplaces          0
+FireplaceQu       690
+GarageType         81
+GarageYrBlt        81
+GarageFinish       81
+GarageCars          0
+GarageArea          0
+GarageQual         81
+GarageCond         81
+PavedDrive          0
+WoodDeckSF          0
+OpenPorchSF         0
+EnclosedPorch       0
+3SsnPorch           0
+ScreenPorch         0
+PoolArea            0
+PoolQC           1453
+Fence            1179
+MiscFeature      1406
+MiscVal             0
+MoSold              0
+YrSold              0
+SaleType            0
+SaleCondition       0
+SalePrice           0
+Length: 81, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os </span><br><span class="line"></span><br><span class="line">print(os.listdir(<span class="string">'../input'</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;sample_submission.csv&apos;, &apos;test.csv&apos;, &apos;data_description.txt&apos;, &apos;train.csv&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data.drop(<span class="string">'Id'</span>,axis = <span class="number">1</span> ,inplace = <span class="literal">True</span>)</span><br><span class="line">test_data.drop(<span class="string">'Id'</span>,axis = <span class="number">1</span> ,inplace= <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.head()</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<p>​<br></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MSSubClass</th>
+      <th>MSZoning</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>LotShape</th>
+      <th>LandContour</th>
+      <th>Utilities</th>
+      <th>LotConfig</th>
+      <th>...</th>
+      <th>PoolArea</th>
+      <th>PoolQC</th>
+      <th>Fence</th>
+      <th>MiscFeature</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SaleType</th>
+      <th>SaleCondition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>65.0</td>
+      <td>8450</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>208500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>80.0</td>
+      <td>9600</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2007</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>181500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>68.0</td>
+      <td>11250</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>9</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>223500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>70</td>
+      <td>RL</td>
+      <td>60.0</td>
+      <td>9550</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Corner</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Abnorml</td>
+      <td>140000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>84.0</td>
+      <td>14260</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>250000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 80 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data.describe().T</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<p>​<br></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MSSubClass</th>
+      <td>1460.0</td>
+      <td>56.897260</td>
+      <td>42.300571</td>
+      <td>20.0</td>
+      <td>20.00</td>
+      <td>50.0</td>
+      <td>70.00</td>
+      <td>190.0</td>
+    </tr>
+    <tr>
+      <th>LotFrontage</th>
+      <td>1201.0</td>
+      <td>70.049958</td>
+      <td>24.284752</td>
+      <td>21.0</td>
+      <td>59.00</td>
+      <td>69.0</td>
+      <td>80.00</td>
+      <td>313.0</td>
+    </tr>
+    <tr>
+      <th>LotArea</th>
+      <td>1460.0</td>
+      <td>10516.828082</td>
+      <td>9981.264932</td>
+      <td>1300.0</td>
+      <td>7553.50</td>
+      <td>9478.5</td>
+      <td>11601.50</td>
+      <td>215245.0</td>
+    </tr>
+    <tr>
+      <th>OverallQual</th>
+      <td>1460.0</td>
+      <td>6.099315</td>
+      <td>1.382997</td>
+      <td>1.0</td>
+      <td>5.00</td>
+      <td>6.0</td>
+      <td>7.00</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>OverallCond</th>
+      <td>1460.0</td>
+      <td>5.575342</td>
+      <td>1.112799</td>
+      <td>1.0</td>
+      <td>5.00</td>
+      <td>5.0</td>
+      <td>6.00</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>YearBuilt</th>
+      <td>1460.0</td>
+      <td>1971.267808</td>
+      <td>30.202904</td>
+      <td>1872.0</td>
+      <td>1954.00</td>
+      <td>1973.0</td>
+      <td>2000.00</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>YearRemodAdd</th>
+      <td>1460.0</td>
+      <td>1984.865753</td>
+      <td>20.645407</td>
+      <td>1950.0</td>
+      <td>1967.00</td>
+      <td>1994.0</td>
+      <td>2004.00</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>MasVnrArea</th>
+      <td>1452.0</td>
+      <td>103.685262</td>
+      <td>181.066207</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>166.00</td>
+      <td>1600.0</td>
+    </tr>
+    <tr>
+      <th>BsmtFinSF1</th>
+      <td>1460.0</td>
+      <td>443.639726</td>
+      <td>456.098091</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>383.5</td>
+      <td>712.25</td>
+      <td>5644.0</td>
+    </tr>
+    <tr>
+      <th>BsmtFinSF2</th>
+      <td>1460.0</td>
+      <td>46.549315</td>
+      <td>161.319273</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1474.0</td>
+    </tr>
+    <tr>
+      <th>BsmtUnfSF</th>
+      <td>1460.0</td>
+      <td>567.240411</td>
+      <td>441.866955</td>
+      <td>0.0</td>
+      <td>223.00</td>
+      <td>477.5</td>
+      <td>808.00</td>
+      <td>2336.0</td>
+    </tr>
+    <tr>
+      <th>TotalBsmtSF</th>
+      <td>1460.0</td>
+      <td>1057.429452</td>
+      <td>438.705324</td>
+      <td>0.0</td>
+      <td>795.75</td>
+      <td>991.5</td>
+      <td>1298.25</td>
+      <td>6110.0</td>
+    </tr>
+    <tr>
+      <th>1stFlrSF</th>
+      <td>1460.0</td>
+      <td>1162.626712</td>
+      <td>386.587738</td>
+      <td>334.0</td>
+      <td>882.00</td>
+      <td>1087.0</td>
+      <td>1391.25</td>
+      <td>4692.0</td>
+    </tr>
+    <tr>
+      <th>2ndFlrSF</th>
+      <td>1460.0</td>
+      <td>346.992466</td>
+      <td>436.528436</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>728.00</td>
+      <td>2065.0</td>
+    </tr>
+    <tr>
+      <th>LowQualFinSF</th>
+      <td>1460.0</td>
+      <td>5.844521</td>
+      <td>48.623081</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>572.0</td>
+    </tr>
+    <tr>
+      <th>GrLivArea</th>
+      <td>1460.0</td>
+      <td>1515.463699</td>
+      <td>525.480383</td>
+      <td>334.0</td>
+      <td>1129.50</td>
+      <td>1464.0</td>
+      <td>1776.75</td>
+      <td>5642.0</td>
+    </tr>
+    <tr>
+      <th>BsmtFullBath</th>
+      <td>1460.0</td>
+      <td>0.425342</td>
+      <td>0.518911</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>BsmtHalfBath</th>
+      <td>1460.0</td>
+      <td>0.057534</td>
+      <td>0.238753</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>FullBath</th>
+      <td>1460.0</td>
+      <td>1.565068</td>
+      <td>0.550916</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>HalfBath</th>
+      <td>1460.0</td>
+      <td>0.382877</td>
+      <td>0.502885</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BedroomAbvGr</th>
+      <td>1460.0</td>
+      <td>2.866438</td>
+      <td>0.815778</td>
+      <td>0.0</td>
+      <td>2.00</td>
+      <td>3.0</td>
+      <td>3.00</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>KitchenAbvGr</th>
+      <td>1460.0</td>
+      <td>1.046575</td>
+      <td>0.220338</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>TotRmsAbvGrd</th>
+      <td>1460.0</td>
+      <td>6.517808</td>
+      <td>1.625393</td>
+      <td>2.0</td>
+      <td>5.00</td>
+      <td>6.0</td>
+      <td>7.00</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>Fireplaces</th>
+      <td>1460.0</td>
+      <td>0.613014</td>
+      <td>0.644666</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>GarageYrBlt</th>
+      <td>1379.0</td>
+      <td>1978.506164</td>
+      <td>24.689725</td>
+      <td>1900.0</td>
+      <td>1961.00</td>
+      <td>1980.0</td>
+      <td>2002.00</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>GarageCars</th>
+      <td>1460.0</td>
+      <td>1.767123</td>
+      <td>0.747315</td>
+      <td>0.0</td>
+      <td>1.00</td>
+      <td>2.0</td>
+      <td>2.00</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>GarageArea</th>
+      <td>1460.0</td>
+      <td>472.980137</td>
+      <td>213.804841</td>
+      <td>0.0</td>
+      <td>334.50</td>
+      <td>480.0</td>
+      <td>576.00</td>
+      <td>1418.0</td>
+    </tr>
+    <tr>
+      <th>WoodDeckSF</th>
+      <td>1460.0</td>
+      <td>94.244521</td>
+      <td>125.338794</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>168.00</td>
+      <td>857.0</td>
+    </tr>
+    <tr>
+      <th>OpenPorchSF</th>
+      <td>1460.0</td>
+      <td>46.660274</td>
+      <td>66.256028</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>25.0</td>
+      <td>68.00</td>
+      <td>547.0</td>
+    </tr>
+    <tr>
+      <th>EnclosedPorch</th>
+      <td>1460.0</td>
+      <td>21.954110</td>
+      <td>61.119149</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>552.0</td>
+    </tr>
+    <tr>
+      <th>3SsnPorch</th>
+      <td>1460.0</td>
+      <td>3.409589</td>
+      <td>29.317331</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>508.0</td>
+    </tr>
+    <tr>
+      <th>ScreenPorch</th>
+      <td>1460.0</td>
+      <td>15.060959</td>
+      <td>55.757415</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>480.0</td>
+    </tr>
+    <tr>
+      <th>PoolArea</th>
+      <td>1460.0</td>
+      <td>2.758904</td>
+      <td>40.177307</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>738.0</td>
+    </tr>
+    <tr>
+      <th>MiscVal</th>
+      <td>1460.0</td>
+      <td>43.489041</td>
+      <td>496.123024</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>15500.0</td>
+    </tr>
+    <tr>
+      <th>MoSold</th>
+      <td>1460.0</td>
+      <td>6.321918</td>
+      <td>2.703626</td>
+      <td>1.0</td>
+      <td>5.00</td>
+      <td>6.0</td>
+      <td>8.00</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>YrSold</th>
+      <td>1460.0</td>
+      <td>2007.815753</td>
+      <td>1.328095</td>
+      <td>2006.0</td>
+      <td>2007.00</td>
+      <td>2008.0</td>
+      <td>2009.00</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>SalePrice</th>
+      <td>1460.0</td>
+      <td>180921.195890</td>
+      <td>79442.502883</td>
+      <td>34900.0</td>
+      <td>129975.00</td>
+      <td>163000.0</td>
+      <td>214000.00</td>
+      <td>755000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(train_data[<span class="string">'GrLivArea'</span>],train_data[<span class="string">'SalePrice'</span>],label = <span class="string">'area vs price'</span>);</span><br><span class="line">plt.xlabel(<span class="string">'GrLivArea'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'SalePrice'</span>)</span><br><span class="line">plt.legend(loc = <span class="string">'lower right'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="E:%5CMyblog%5Csource%5Cimages%5Coutput_11_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data[train_data[<span class="string">'Alley'</span>].isnull()].head()</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MSSubClass</th>
+      <th>MSZoning</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>LotShape</th>
+      <th>LandContour</th>
+      <th>Utilities</th>
+      <th>LotConfig</th>
+      <th>...</th>
+      <th>PoolArea</th>
+      <th>PoolQC</th>
+      <th>Fence</th>
+      <th>MiscFeature</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SaleType</th>
+      <th>SaleCondition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>65.0</td>
+      <td>8450</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>208500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>80.0</td>
+      <td>9600</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2007</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>181500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>68.0</td>
+      <td>11250</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>9</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>223500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>70</td>
+      <td>RL</td>
+      <td>60.0</td>
+      <td>9550</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Corner</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Abnorml</td>
+      <td>140000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>84.0</td>
+      <td>14260</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>250000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 80 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> train_data.columns:</span><br><span class="line">    list.append(i)</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;MSSubClass&apos;, &apos;MSZoning&apos;, &apos;LotFrontage&apos;, &apos;LotArea&apos;, &apos;Street&apos;, &apos;Alley&apos;, &apos;LotShape&apos;, &apos;LandContour&apos;, &apos;Utilities&apos;, &apos;LotConfig&apos;, &apos;LandSlope&apos;, &apos;Neighborhood&apos;, &apos;Condition1&apos;, &apos;Condition2&apos;, &apos;BldgType&apos;, &apos;HouseStyle&apos;, &apos;OverallQual&apos;, &apos;OverallCond&apos;, &apos;YearBuilt&apos;, &apos;YearRemodAdd&apos;, &apos;RoofStyle&apos;, &apos;RoofMatl&apos;, &apos;Exterior1st&apos;, &apos;Exterior2nd&apos;, &apos;MasVnrType&apos;, &apos;MasVnrArea&apos;, &apos;ExterQual&apos;, &apos;ExterCond&apos;, &apos;Foundation&apos;, &apos;BsmtQual&apos;, &apos;BsmtCond&apos;, &apos;BsmtExposure&apos;, &apos;BsmtFinType1&apos;, &apos;BsmtFinSF1&apos;, &apos;BsmtFinType2&apos;, &apos;BsmtFinSF2&apos;, &apos;BsmtUnfSF&apos;, &apos;TotalBsmtSF&apos;, &apos;Heating&apos;, &apos;HeatingQC&apos;, &apos;CentralAir&apos;, &apos;Electrical&apos;, &apos;1stFlrSF&apos;, &apos;2ndFlrSF&apos;, &apos;LowQualFinSF&apos;, &apos;GrLivArea&apos;, &apos;BsmtFullBath&apos;, &apos;BsmtHalfBath&apos;, &apos;FullBath&apos;, &apos;HalfBath&apos;, &apos;BedroomAbvGr&apos;, &apos;KitchenAbvGr&apos;, &apos;KitchenQual&apos;, &apos;TotRmsAbvGrd&apos;, &apos;Functional&apos;, &apos;Fireplaces&apos;, &apos;FireplaceQu&apos;, &apos;GarageType&apos;, &apos;GarageYrBlt&apos;, &apos;GarageFinish&apos;, &apos;GarageCars&apos;, &apos;GarageArea&apos;, &apos;GarageQual&apos;, &apos;GarageCond&apos;, &apos;PavedDrive&apos;, &apos;WoodDeckSF&apos;, &apos;OpenPorchSF&apos;, &apos;EnclosedPorch&apos;, &apos;3SsnPorch&apos;, &apos;ScreenPorch&apos;, &apos;PoolArea&apos;, &apos;PoolQC&apos;, &apos;Fence&apos;, &apos;MiscFeature&apos;, &apos;MiscVal&apos;, &apos;MoSold&apos;, &apos;YrSold&apos;, &apos;SaleType&apos;, &apos;SaleCondition&apos;, &apos;SalePrice&apos;]</code></pre><ul>
+<li>删除缺失值过多的列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dropped_columns = [<span class="string">'Alley'</span>,<span class="string">'PoolQC'</span>,<span class="string">'Fence'</span>,<span class="string">'MiscFeature'</span>]</span><br><span class="line">train_data.drop(dropped_columns,axis = <span class="number">1</span> ,inplace= <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_data.drop(dropped_columns,axis = <span class="number">1</span> ,inplace= <span class="literal">True</span>)</span><br><span class="line">test_data.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>(1459, 75)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = train_data[<span class="string">'SalePrice'</span>].reset_index(drop =<span class="literal">True</span>)</span><br><span class="line">train_features = train_data.drop(<span class="string">'SalePrice'</span>,axis = <span class="number">1</span>)</span><br><span class="line">features = pd.concat([train_features,test_data]).reset_index(drop = <span class="literal">True</span>)</span><br><span class="line">labels =train_data[<span class="string">'SalePrice'</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'删除缺失值后，feature shape为：&#123;&#125;'</span>.format(features.shape))</span><br></pre></td></tr></table></figure>
+
+<pre><code>删除缺失值后，feature shape为：(2919, 75)</code></pre><h1 id="feature"><a href="#feature" class="headerlink" title="feature"></a>feature</h1><ul>
+<li>存在空值列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features.isnull().sum()[features.isnull().sum() &gt; <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>MSZoning           4
+LotFrontage      486
+Utilities          2
+Exterior1st        1
+Exterior2nd        1
+MasVnrType        24
+MasVnrArea        23
+BsmtQual          81
+BsmtCond          82
+BsmtExposure      82
+BsmtFinType1      79
+BsmtFinSF1         1
+BsmtFinType2      80
+BsmtFinSF2         1
+BsmtUnfSF          1
+TotalBsmtSF        1
+Electrical         1
+BsmtFullBath       2
+BsmtHalfBath       2
+KitchenQual        1
+Functional         2
+FireplaceQu     1420
+GarageType       157
+GarageYrBlt      159
+GarageFinish     159
+GarageCars         1
+GarageArea         1
+GarageQual       159
+GarageCond       159
+SaleType           1
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> enumerate(features[<span class="string">'Exterior1st'</span>]):</span><br><span class="line">    <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> dict:</span><br><span class="line">        dict[v] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        dict[v] +=<span class="number">1</span></span><br><span class="line">        </span><br><span class="line">list = [x <span class="keyword">for</span> x <span class="keyword">in</span> dict.keys()]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">features[<span class="string">'Exterior1st'</span>][features[<span class="string">'Exterior1st'</span>] == <span class="string">'Vinylsd'</span>] = <span class="string">'VinylSd'</span></span><br><span class="line">features[<span class="string">'Exterior1st'</span>] = features[<span class="string">'Exterior1st'</span>].fillna(<span class="string">'VinylSd'</span>)</span><br><span class="line">features[<span class="string">'Exterior1st'</span>].mode()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    VinylSd
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features.mode()[<span class="string">'MSSubClass'</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>20</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">features[<span class="string">'Exterior2nd'</span>] = features[<span class="string">'Exterior2nd'</span>].fillna(features[<span class="string">'Exterior2nd'</span>].mode()[<span class="number">0</span>])</span><br><span class="line">features[<span class="string">'SaleType'</span>] = features[<span class="string">'SaleType'</span>].fillna(features[<span class="string">'SaleType'</span>].mode()[<span class="number">0</span>])</span><br><span class="line">features[<span class="string">'MSSubClass'</span>] = features.fillna(features.mode()[<span class="string">'MSSubClass'</span>][<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">type_change</span><span class="params">(feature,needed,type)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> needed:</span><br><span class="line">        feature[i] = feature[i].astype(type)</span><br><span class="line"></span><br><span class="line">type_change(features,[<span class="string">'MSSubClass'</span>,<span class="string">'YrSold'</span>,<span class="string">'MoSold'</span>],type = <span class="string">'str'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> [<span class="string">'Functional'</span>,<span class="string">'Electrical'</span>,<span class="string">'KitchenQual'</span>]:</span><br><span class="line">    features[column].fillna(features.mode()[column][<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> [<span class="string">'Exterior1st'</span>,<span class="string">'Exterior2nd'</span>,<span class="string">'SaleType'</span>]:</span><br><span class="line">    <span class="keyword">if</span> features[column].isnull().sum() == <span class="number">0</span>: </span><br><span class="line">        print(<span class="string">'T'</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>T
+T
+T</code></pre><ul>
+<li>检验是否有空值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features.isnull().sum()[features.isnull().sum() &gt; <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>MSZoning           4
+LotFrontage      486
+Utilities          2
+MasVnrType        24
+MasVnrArea        23
+BsmtQual          81
+BsmtCond          82
+BsmtExposure      82
+BsmtFinType1      79
+BsmtFinSF1         1
+BsmtFinType2      80
+BsmtFinSF2         1
+BsmtUnfSF          1
+TotalBsmtSF        1
+Electrical         1
+BsmtFullBath       2
+BsmtHalfBath       2
+KitchenQual        1
+Functional         2
+FireplaceQu     1420
+GarageType       157
+GarageYrBlt      159
+GarageFinish     159
+GarageCars         1
+GarageArea         1
+GarageQual       159
+GarageCond       159
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features[<span class="string">'MSZoning'</span>] = features.groupby(<span class="string">'MSSubClass'</span>)[<span class="string">'MSZoning'</span>].transform(<span class="keyword">lambda</span> x : x.fillna(x.mode()[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定性定量数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">objects = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> features.columns:</span><br><span class="line">    <span class="keyword">if</span> features[i].dtype == object:</span><br><span class="line">        objects.append(i)</span><br><span class="line">features.update(features[objects].fillna(<span class="string">'None'</span>))</span><br><span class="line"></span><br><span class="line">features[<span class="string">'LotFrontage'</span>] = features.groupby(<span class="string">'Neighborhood'</span>)[<span class="string">'LotFrontage'</span>].transform(<span class="keyword">lambda</span> x: x.fillna(x.median()))</span><br><span class="line"></span><br><span class="line">numeric_dtypes = [<span class="string">'int16'</span>, <span class="string">'int32'</span>, <span class="string">'int64'</span>, <span class="string">'float16'</span>, <span class="string">'float32'</span>, <span class="string">'float64'</span>]</span><br><span class="line">numerics = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> features.columns:</span><br><span class="line">    <span class="keyword">if</span> features[i].dtype <span class="keyword">in</span> numeric_dtypes:</span><br><span class="line">        numerics.append(i)</span><br><span class="line">features.update(features[numerics].fillna(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(objects,<span class="string">'\n'</span>,numerics)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;MSSubClass&apos;, &apos;MSZoning&apos;, &apos;Street&apos;, &apos;LotShape&apos;, &apos;LandContour&apos;, &apos;Utilities&apos;, &apos;LotConfig&apos;, &apos;LandSlope&apos;, &apos;Neighborhood&apos;, &apos;Condition1&apos;, &apos;Condition2&apos;, &apos;BldgType&apos;, &apos;HouseStyle&apos;, &apos;RoofStyle&apos;, &apos;RoofMatl&apos;, &apos;Exterior1st&apos;, &apos;Exterior2nd&apos;, &apos;MasVnrType&apos;, &apos;ExterQual&apos;, &apos;ExterCond&apos;, &apos;Foundation&apos;, &apos;BsmtQual&apos;, &apos;BsmtCond&apos;, &apos;BsmtExposure&apos;, &apos;BsmtFinType1&apos;, &apos;BsmtFinType2&apos;, &apos;Heating&apos;, &apos;HeatingQC&apos;, &apos;CentralAir&apos;, &apos;Electrical&apos;, &apos;KitchenQual&apos;, &apos;Functional&apos;, &apos;FireplaceQu&apos;, &apos;GarageType&apos;, &apos;GarageFinish&apos;, &apos;GarageQual&apos;, &apos;GarageCond&apos;, &apos;PavedDrive&apos;, &apos;MoSold&apos;, &apos;YrSold&apos;, &apos;SaleType&apos;, &apos;SaleCondition&apos;] 
+ [&apos;LotFrontage&apos;, &apos;LotArea&apos;, &apos;OverallQual&apos;, &apos;OverallCond&apos;, &apos;YearBuilt&apos;, &apos;YearRemodAdd&apos;, &apos;MasVnrArea&apos;, &apos;BsmtFinSF1&apos;, &apos;BsmtFinSF2&apos;, &apos;BsmtUnfSF&apos;, &apos;TotalBsmtSF&apos;, &apos;1stFlrSF&apos;, &apos;2ndFlrSF&apos;, &apos;LowQualFinSF&apos;, &apos;GrLivArea&apos;, &apos;BsmtFullBath&apos;, &apos;BsmtHalfBath&apos;, &apos;FullBath&apos;, &apos;HalfBath&apos;, &apos;BedroomAbvGr&apos;, &apos;KitchenAbvGr&apos;, &apos;TotRmsAbvGrd&apos;, &apos;Fireplaces&apos;, &apos;GarageYrBlt&apos;, &apos;GarageCars&apos;, &apos;GarageArea&apos;, &apos;WoodDeckSF&apos;, &apos;OpenPorchSF&apos;, &apos;EnclosedPorch&apos;, &apos;3SsnPorch&apos;, &apos;ScreenPorch&apos;, &apos;PoolArea&apos;, &apos;MiscVal&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> skew  <span class="comment"># for some statistics  # 计算数据集的偏度</span></span><br><span class="line"><span class="keyword">from</span> scipy.special <span class="keyword">import</span> boxcox1p</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> boxcox_normmax</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.skew.html#scipy.stats.skew" target="_blank" rel="noopener">scipy.stats.skew</a><br><br><a href="http://www.caacle.com/scipy-html-1.1.0/generated/scipy.special.boxcox1p.html" target="_blank" rel="noopener">scipy.special.boxcox1p box-cox变换</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">numeric_dtypes = [<span class="string">'int16'</span>, <span class="string">'int32'</span>, <span class="string">'int64'</span>, <span class="string">'float16'</span>, <span class="string">'float32'</span>, <span class="string">'float64'</span>]</span><br><span class="line">numerics2 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> features.columns:</span><br><span class="line">    <span class="keyword">if</span> features[i].dtype <span class="keyword">in</span> numeric_dtypes:</span><br><span class="line">        numerics2.append(i)</span><br><span class="line">skew_features = features[numerics2].apply(<span class="keyword">lambda</span> x: skew(x)).sort_values(ascending=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 偏度&gt;0.5</span></span><br><span class="line">high_skew = skew_features[skew_features &gt; <span class="number">0.5</span>]</span><br><span class="line">skew_index = high_skew.index</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> skew_index:</span><br><span class="line">    features[i] = boxcox1p(features[i], boxcox_normmax(features[i] + <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">high_skew</span><br></pre></td></tr></table></figure>
+
+<pre><code>MiscVal          21.947195
+PoolArea         16.898328
+LotArea          12.822431
+LowQualFinSF     12.088761
+3SsnPorch        11.376065
+KitchenAbvGr      4.302254
+BsmtFinSF2        4.146143
+EnclosedPorch     4.003891
+ScreenPorch       3.946694
+BsmtHalfBath      3.931594
+MasVnrArea        2.613592
+OpenPorchSF       2.535114
+WoodDeckSF        1.842433
+LotFrontage       1.505704
+1stFlrSF          1.469604
+BsmtFinSF1        1.425230
+GrLivArea         1.269358
+TotalBsmtSF       1.156894
+BsmtUnfSF         0.919339
+2ndFlrSF          0.861675
+TotRmsAbvGrd      0.758367
+Fireplaces        0.733495
+HalfBath          0.694566
+BsmtFullBath      0.624832
+OverallCond       0.570312
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features.isnull().sum()[features.isnull().sum() &gt; <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>Series([], dtype: int64)</code></pre><ul>
+<li>增加新特征</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建造日期+ 改造日期</span></span><br><span class="line">features[<span class="string">'YrBltAndRemod'</span>] = (features[<span class="string">'YearBuilt'</span>] + features[<span class="string">'YearRemodAdd'</span>]) /<span class="number">2</span></span><br><span class="line"><span class="comment"># 总面积</span></span><br><span class="line">features[<span class="string">'TotalSF'</span>] = features[<span class="string">'TotalBsmtSF'</span>] + features[<span class="string">'1stFlrSF'</span>] + features[<span class="string">'2ndFlrSF'</span>]</span><br><span class="line">features[<span class="string">'Total_sqr_footage'</span>] = (features[<span class="string">'BsmtFinSF1'</span>] + features[<span class="string">'BsmtFinSF2'</span>] +</span><br><span class="line">                                 features[<span class="string">'1stFlrSF'</span>] + features[<span class="string">'2ndFlrSF'</span>])</span><br><span class="line">features[<span class="string">'Total_Bathrooms'</span>] = (features[<span class="string">'FullBath'</span>] + (<span class="number">0.5</span> * features[<span class="string">'HalfBath'</span>]) +</span><br><span class="line">                               features[<span class="string">'BsmtFullBath'</span>] + (<span class="number">0.5</span> * features[<span class="string">'BsmtHalfBath'</span>]))</span><br><span class="line"></span><br><span class="line">features[<span class="string">'Total_porch_sf'</span>] = (features[<span class="string">'OpenPorchSF'</span>] + features[<span class="string">'3SsnPorch'</span>] +</span><br><span class="line">                              features[<span class="string">'EnclosedPorch'</span>] + features[<span class="string">'ScreenPorch'</span>] +</span><br><span class="line">                              features[<span class="string">'WoodDeckSF'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">features[<span class="string">'haspool'</span>] = features[<span class="string">'PoolArea'</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">features[<span class="string">'has2ndfloor'</span>] = features[<span class="string">'2ndFlrSF'</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">features[<span class="string">'hasgarage'</span>] = features[<span class="string">'GarageArea'</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">features[<span class="string">'hasbsmt'</span>] = features[<span class="string">'TotalBsmtSF'</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">features[<span class="string">'hasfireplace'</span>] = features[<span class="string">'Fireplaces'</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>(2919, 85)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final_features = pd.get_dummies(features).reset_index(drop = <span class="literal">True</span>)</span><br><span class="line">print(<span class="string">'最终拥有的特征个数为：&#123;&#125;'</span>.format(final_features.shape[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>最终拥有的特征个数为：329</code></pre><ul>
+<li>划分训练，和提交的数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X = final_features.iloc[:len(y),:]</span><br><span class="line">X_sub = final_features.iloc[len(y):,:]</span><br><span class="line">X.shape,y.shape,X_sub.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>((1460, 329), (1460,), (1459, 329))</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n_train = X.shape[<span class="number">0</span>]</span><br><span class="line">train_features = nd.array(X)</span><br><span class="line">test_features = nd.array(X_sub)</span><br><span class="line">train_labels = nd.array(y).reshape(<span class="number">-1</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = XGBRegressor()</span><br><span class="line">model.fit(X,y,verbose = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[02:43:09] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+
+
+
+
+
+XGBRegressor(base_score=0.5, booster=&apos;gbtree&apos;, colsample_bylevel=1,
+             colsample_bynode=1, colsample_bytree=1, gamma=0,
+             importance_type=&apos;gain&apos;, learning_rate=0.1, max_delta_step=0,
+             max_depth=3, min_child_weight=1, missing=None, n_estimators=100,
+             n_jobs=1, nthread=None, objective=&apos;reg:linear&apos;, random_state=0,
+             reg_alpha=0, reg_lambda=1, scale_pos_weight=1, seed=None,
+             silent=None, subsample=1, verbosity=1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_data = pd.read_csv(<span class="string">'../input/test.csv'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_preds = model.predict(X_sub)</span><br><span class="line">output = pd.DataFrame(&#123;<span class="string">'Id'</span>:test_data.Id,<span class="string">'SalePrice'</span>: test_preds&#125;)</span><br><span class="line">output.to_csv(<span class="string">'submission.csv'</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my_model1 = XGBRegressor(n_estimators=<span class="number">1000</span>, learning_rate=<span class="number">0.05</span>)</span><br><span class="line">my_model1.fit(X, y)</span><br><span class="line"></span><br><span class="line">test_preds1 = my_model1.predict(X_sub)</span><br><span class="line">output = pd.DataFrame(&#123;<span class="string">'Id'</span>:test_data.Id,<span class="string">'SalePrice'</span>: test_preds1&#125;)</span><br><span class="line">output.to_csv(<span class="string">'submission1.csv'</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[02:43:12] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.</code></pre>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/kaggle/" rel="tag"># kaggle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/Mxnet手写线性回归/" rel="next" title="Mxnet手写线性回归">
+                <i class="fa fa-chevron-left"></i> Mxnet手写线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+
+<% if(theme.gitment.enable) { %>
+<div id="gitment_title" class="gitment_title"></div>
+<div id="container" style="display:none"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: decodeURI(window.location.pathname),
+      theme: myTheme,
+      owner: 'Childish1jin',
+      repo: 'Childish1jin.github.io',
+      oauth: {
+        client_id: '89b78712c0406690e89a',
+        client_secret: '7a1f1201723900ccd24fee6d3df54781b80904ff'
+      }
+    });
+    gitment.render('container');
+  }
+
+  showGitment();
+</script>
+<% } %>
+
+        </%></%></div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Barry Wang</p>
+              <div class="site-description motion-element" itemprop="description">run barry, run!</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#feature"><span class="nav-number">1.</span> <span class="nav-text">feature</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Barry Wang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
