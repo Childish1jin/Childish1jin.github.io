@@ -134,17 +134,21 @@
 
 
 
-  <meta name="description" content="以癌症预测为例             0:恶性，1:良性  TP： 真正例，良性被正确预测 TN：真反例，恶性被正确预测 FP：假正例，恶性被预测为良性 FN：假反例，良性被预测为恶性  Accuracy:准确率（TP+TN）/（TP+TN+FP+FN）Precision:查准率    TP/(TP+FP)Recall:查全率    TP/(TP+FN) 12345678import numpy">
+  <meta name="description" content="Altair的使用学习12345# !pip install vega# !pip install vega_datasetsimport altair as altalt.renderers.enable(&apos;notebook&apos;)  RendererRegistry.enable(&amp;apos;notebook&amp;apos;)123456789# load a simple dataset as a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Barry&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/Tips/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/Altair的使用学习/index.html">
 <meta property="og:site_name" content="Barry&#39;s blog">
-<meta property="og:description" content="以癌症预测为例             0:恶性，1:良性  TP： 真正例，良性被正确预测 TN：真反例，恶性被正确预测 FP：假正例，恶性被预测为良性 FN：假反例，良性被预测为恶性  Accuracy:准确率（TP+TN）/（TP+TN+FP+FN）Precision:查准率    TP/(TP+FP)Recall:查全率    TP/(TP+FN) 12345678import numpy">
+<meta property="og:description" content="Altair的使用学习12345# !pip install vega# !pip install vega_datasetsimport altair as altalt.renderers.enable(&apos;notebook&apos;)  RendererRegistry.enable(&amp;apos;notebook&amp;apos;)123456789# load a simple dataset as a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-12T12:36:32.295Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190827135555719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190827135622868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190827135632517.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-27T05:58:32.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Barry&#39;s blog">
-<meta name="twitter:description" content="以癌症预测为例             0:恶性，1:良性  TP： 真正例，良性被正确预测 TN：真反例，恶性被正确预测 FP：假正例，恶性被预测为良性 FN：假反例，良性被预测为恶性  Accuracy:准确率（TP+TN）/（TP+TN+FP+FN）Precision:查准率    TP/(TP+FP)Recall:查全率    TP/(TP+FN) 12345678import numpy">
+<meta name="twitter:description" content="Altair的使用学习12345# !pip install vega# !pip install vega_datasetsimport altair as altalt.renderers.enable(&apos;notebook&apos;)  RendererRegistry.enable(&amp;apos;notebook&amp;apos;)123456789# load a simple dataset as a">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190827135555719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -154,7 +158,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/Tips/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/Altair的使用学习/">
 
 
 
@@ -404,7 +408,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Tips/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/Altair的使用学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Wang">
@@ -447,7 +451,7 @@
                 
               
 
-              <time title="创建时间：2019-07-12 20:36:31 / 修改时间：20:36:32" itemprop="dateCreated datePublished" datetime="2019-07-12T20:36:31+08:00">2019-07-12</time>
+              <time title="创建时间：2019-08-27 13:58:51 / 修改时间：13:58:32" itemprop="dateCreated datePublished" datetime="2019-08-27T13:58:51+08:00">2019-08-27</time>
             </span>
           
 
@@ -491,18 +495,100 @@
       
 
       
-        <p>以癌症预测为例             0:恶性，1:良性</p>
-<ul>
-<li>TP： 真正例，良性被正确预测</li>
-<li>TN：真反例，恶性被正确预测</li>
-<li>FP：假正例，恶性被预测为良性</li>
-<li>FN：假反例，良性被预测为恶性</li>
-</ul>
-<p>Accuracy:准确率<br>（TP+TN）/（TP+TN+FP+FN）<br>Precision:查准率<br>    TP/(TP+FP)<br>Recall:查全率<br>    TP/(TP+FN)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line"></span><br><span class="line">arr = np.arange(12).reshape(3,4)</span><br><span class="line">print(arr)</span><br><span class="line">a = arr[:,::2]</span><br><span class="line">print(a)</span><br><span class="line">b = arr[::1,:]</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+        <h1 id="Altair的使用学习"><a href="#Altair的使用学习" class="headerlink" title="Altair的使用学习"></a>Altair的使用学习</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !pip install vega</span></span><br><span class="line"><span class="comment"># !pip install vega_datasets</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> altair <span class="keyword">as</span> alt</span><br><span class="line">alt.renderers.enable(<span class="string">'notebook'</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[[ 0  1  2  3]</span><br><span class="line"> [ 4  5  6  7]</span><br><span class="line"> [ 8  9 10 11]]</span><br><span class="line">[[ 0  2]</span><br><span class="line"> [ 4  6]</span><br><span class="line"> [ 8 10]]</span><br><span class="line">[[ 0  1  2  3]</span><br><span class="line"> [ 4  5  6  7]</span><br><span class="line"> [ 8  9 10 11]]</span><br></pre></td></tr></table></figure>
+<pre><code>RendererRegistry.enable(&apos;notebook&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load a simple dataset as a pandas DataFrame</span></span><br><span class="line"><span class="keyword">from</span> vega_datasets <span class="keyword">import</span> data</span><br><span class="line">cars = data.cars()</span><br><span class="line"></span><br><span class="line">alt.Chart(cars).mark_point().encode(</span><br><span class="line">    x=<span class="string">'Horsepower'</span>,</span><br><span class="line">    y=<span class="string">'Miles_per_Gallon'</span>,</span><br><span class="line">    color=<span class="string">'Origin'</span>,</span><br><span class="line">).interactive()</span><br></pre></td></tr></table></figure>
 
+<pre><code>&lt;vega.vegalite.VegaLite at 0x7f5166171a20&gt;</code></pre><p>​    </p>
+<p><img src="https://img-blog.csdnimg.cn/20190827135555719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-rJv2r6p2-1566885312130)(1_files/1_2_2.png)\]"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> vega_datasets <span class="keyword">import</span> data</span><br><span class="line"></span><br><span class="line">df = data.seattle_weather()</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>precipitation</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>wind</th>
+      <th>weather</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2012-01-01</td>
+      <td>0.0</td>
+      <td>12.8</td>
+      <td>5.0</td>
+      <td>4.7</td>
+      <td>drizzle</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2012-01-02</td>
+      <td>10.9</td>
+      <td>10.6</td>
+      <td>2.8</td>
+      <td>4.5</td>
+      <td>rain</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2012-01-03</td>
+      <td>0.8</td>
+      <td>11.7</td>
+      <td>7.2</td>
+      <td>2.3</td>
+      <td>rain</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2012-01-04</td>
+      <td>20.3</td>
+      <td>12.2</td>
+      <td>5.6</td>
+      <td>4.7</td>
+      <td>rain</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2012-01-05</td>
+      <td>1.3</td>
+      <td>8.9</td>
+      <td>2.8</td>
+      <td>6.1</td>
+      <td>rain</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">alt.Chart(df).mark_point().encode(</span><br><span class="line">    alt.X(<span class="string">'temp_max'</span>, title=<span class="string">'Maximum Daily Temperature (C)'</span>),</span><br><span class="line">    alt.Y(<span class="string">'temp_range:Q'</span>, title=<span class="string">'Daily Temperature Range (C)'</span>),</span><br><span class="line">    alt.Color(<span class="string">'weather'</span>),</span><br><span class="line">    alt.Size(<span class="string">'precipitation'</span>, scale=alt.Scale(range=[<span class="number">1</span>, <span class="number">200</span>]))</span><br><span class="line">).transform_calculate(</span><br><span class="line">    <span class="string">"temp_range"</span>, <span class="string">"datum.temp_max - datum.temp_min"</span></span><br><span class="line">).properties(</span><br><span class="line">    width=<span class="number">600</span>,</span><br><span class="line">    height=<span class="number">400</span></span><br><span class="line">).interactive()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;vega.vegalite.VegaLite at 0x7f5137660048&gt;</code></pre><p>​    </p>
+<p><img src="https://img-blog.csdnimg.cn/20190827135622868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-F2S6NONx-1566885312133)(1_files/1_4_2.png)\]"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> altair <span class="keyword">as</span> alt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">42</span>)</span><br><span class="line">source = pd.DataFrame(np.cumsum(np.random.randn(<span class="number">100</span>, <span class="number">3</span>), <span class="number">0</span>).round(<span class="number">2</span>),</span><br><span class="line">                    columns=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>], index=pd.RangeIndex(<span class="number">100</span>, name=<span class="string">'x'</span>))</span><br><span class="line">source = source.reset_index().melt(<span class="string">'x'</span>, var_name=<span class="string">'category'</span>, value_name=<span class="string">'y'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a selection that chooses the nearest point &amp; selects based on x-value</span></span><br><span class="line">nearest = alt.selection(type=<span class="string">'single'</span>, nearest=<span class="literal">True</span>, on=<span class="string">'mouseover'</span>,</span><br><span class="line">                        fields=[<span class="string">'x'</span>], empty=<span class="string">'none'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The basic line</span></span><br><span class="line">line = alt.Chart(source).mark_line(interpolate=<span class="string">'basis'</span>).encode(</span><br><span class="line">    x=<span class="string">'x:Q'</span>,</span><br><span class="line">    y=<span class="string">'y:Q'</span>,</span><br><span class="line">    color=<span class="string">'category:N'</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Transparent selectors across the chart. This is what tells us</span></span><br><span class="line"><span class="comment"># the x-value of the cursor</span></span><br><span class="line">selectors = alt.Chart(source).mark_point().encode(</span><br><span class="line">    x=<span class="string">'x:Q'</span>,</span><br><span class="line">    opacity=alt.value(<span class="number">0</span>),</span><br><span class="line">).add_selection(</span><br><span class="line">    nearest</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Draw points on the line, and highlight based on selection</span></span><br><span class="line">points = line.mark_point().encode(</span><br><span class="line">    opacity=alt.condition(nearest, alt.value(<span class="number">1</span>), alt.value(<span class="number">0</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Draw text labels near the points, and highlight based on selection</span></span><br><span class="line">text = line.mark_text(align=<span class="string">'left'</span>, dx=<span class="number">5</span>, dy=<span class="number">-5</span>).encode(</span><br><span class="line">    text=alt.condition(nearest, <span class="string">'y:Q'</span>, alt.value(<span class="string">' '</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Draw a rule at the location of the selection</span></span><br><span class="line">rules = alt.Chart(source).mark_rule(color=<span class="string">'gray'</span>).encode(</span><br><span class="line">    x=<span class="string">'x:Q'</span>,</span><br><span class="line">).transform_filter(</span><br><span class="line">    nearest</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Put the five layers into a chart and bind the data</span></span><br><span class="line">alt.layer(</span><br><span class="line">    line, selectors, points, rules, text</span><br><span class="line">).properties(</span><br><span class="line">    width=<span class="number">600</span>, height=<span class="number">300</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;vega.vegalite.VegaLite at 0x7f51374ab2e8&gt;</code></pre><p>​    </p>
+<p><img src="https://img-blog.csdnimg.cn/20190827135632517.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Vlcnl3aA==,size_16,color_FFFFFF,t_70" alt="\[外链图片转存失败(img-0t8R0aNP-1566885312133)(1_files/1_5_2.png)\]"></p>
 
       
     </div>
@@ -537,8 +623,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/T/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/08/26/post-name/" rel="next" title="post_name">
+                <i class="fa fa-chevron-left"></i> post_name
               </a>
             
           </div>
@@ -546,10 +632,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/12/用API爬取天气预报数据/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -634,8 +716,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -722,6 +813,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Altair的使用学习"><span class="nav-number">1.</span> <span class="nav-text">Altair的使用学习</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
