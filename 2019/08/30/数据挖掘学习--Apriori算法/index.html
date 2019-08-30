@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="1# data from http://grouplens.org/datasets/movielens/  123# import os# data_folder = os.path.join(os.path.expanduser(&quot;~&quot;), &quot;Data&quot;, &quot;ml-100k&quot;)# ratings_filename = os.path.join(data_folder, &quot;u.data&quot;)  1">
+<meta name="keywords" content="数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘学习--Apriori算法">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/数据挖掘学习--Apriori算法/index.html">
+<meta property="og:site_name" content="Barry&#39;s blog">
+<meta property="og:description" content="1# data from http://grouplens.org/datasets/movielens/  123# import os# data_folder = os.path.join(os.path.expanduser(&quot;~&quot;), &quot;Data&quot;, &quot;ml-100k&quot;)# ratings_filename = os.path.join(data_folder, &quot;u.data&quot;)  1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-30T06:14:54.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据挖掘学习--Apriori算法">
+<meta name="twitter:description" content="1# data from http://grouplens.org/datasets/movielens/  123# import os# data_folder = os.path.join(os.path.expanduser(&quot;~&quot;), &quot;Data&quot;, &quot;ml-100k&quot;)# ratings_filename = os.path.join(data_folder, &quot;u.data&quot;)  1">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Barry's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/30/数据挖掘学习--Apriori算法/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据挖掘学习--Apriori算法 | Barry's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Barry's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Run!!!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/数据挖掘学习--Apriori算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Wang">
+      <meta itemprop="description" content="run barry, run!">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Barry's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据挖掘学习--Apriori算法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-30 14:09:52 / 修改时间：14:14:54" itemprop="dateCreated datePublished" datetime="2019-08-30T14:09:52+08:00">2019-08-30</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># data from http://grouplens.org/datasets/movielens/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import os</span></span><br><span class="line"><span class="comment"># data_folder = os.path.join(os.path.expanduser("~"), "Data", "ml-100k")</span></span><br><span class="line"><span class="comment"># ratings_filename = os.path.join(data_folder, "u.data")</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ratings_filename = Path(<span class="string">'/'</span>).joinpath(Path.cwd(),<span class="string">'data/ml-100k/u.data'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ratings_filename</span><br></pre></td></tr></table></figure>
+
+<pre><code>WindowsPath(&apos;E:/Python/python数据挖掘入门与实践/Learning_Data_Mining_with_Python-master/Chapter 4/data/ml-100k/u.data&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all_ratings = pd.read_csv(ratings_filename, delimiter=<span class="string">"\t"</span>, header=<span class="literal">None</span>, names = [<span class="string">"UserID"</span>, <span class="string">"MovieID"</span>, <span class="string">"Rating"</span>, <span class="string">"Datetime"</span>])</span><br><span class="line">all_ratings[<span class="string">"Datetime"</span>] = pd.to_datetime(all_ratings[<span class="string">'Datetime'</span>],unit=<span class="string">'s'</span>)</span><br><span class="line">all_ratings[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>196</td>
+      <td>242</td>
+      <td>3</td>
+      <td>1997-12-04 15:55:49</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>186</td>
+      <td>302</td>
+      <td>3</td>
+      <td>1998-04-04 19:22:22</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>22</td>
+      <td>377</td>
+      <td>1</td>
+      <td>1997-11-07 07:18:36</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>244</td>
+      <td>51</td>
+      <td>2</td>
+      <td>1997-11-27 05:02:03</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>166</td>
+      <td>346</td>
+      <td>1</td>
+      <td>1998-02-02 05:33:16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># As you can see, there are no review for most movies, such as #213</span></span><br><span class="line">all_ratings[all_ratings[<span class="string">"UserID"</span>] == <span class="number">675</span>].sort_values(<span class="string">"MovieID"</span>)</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>81098</td>
+      <td>675</td>
+      <td>86</td>
+      <td>4</td>
+      <td>1998-03-10 00:26:14</td>
+    </tr>
+    <tr>
+      <td>90696</td>
+      <td>675</td>
+      <td>223</td>
+      <td>1</td>
+      <td>1998-03-10 00:35:51</td>
+    </tr>
+    <tr>
+      <td>92650</td>
+      <td>675</td>
+      <td>235</td>
+      <td>1</td>
+      <td>1998-03-10 00:35:51</td>
+    </tr>
+    <tr>
+      <td>95459</td>
+      <td>675</td>
+      <td>242</td>
+      <td>4</td>
+      <td>1998-03-10 00:08:42</td>
+    </tr>
+    <tr>
+      <td>82845</td>
+      <td>675</td>
+      <td>244</td>
+      <td>3</td>
+      <td>1998-03-10 00:29:35</td>
+    </tr>
+    <tr>
+      <td>53293</td>
+      <td>675</td>
+      <td>258</td>
+      <td>3</td>
+      <td>1998-03-10 00:11:19</td>
+    </tr>
+    <tr>
+      <td>97286</td>
+      <td>675</td>
+      <td>269</td>
+      <td>5</td>
+      <td>1998-03-10 00:08:07</td>
+    </tr>
+    <tr>
+      <td>93720</td>
+      <td>675</td>
+      <td>272</td>
+      <td>3</td>
+      <td>1998-03-10 00:07:11</td>
+    </tr>
+    <tr>
+      <td>73389</td>
+      <td>675</td>
+      <td>286</td>
+      <td>4</td>
+      <td>1998-03-10 00:07:11</td>
+    </tr>
+    <tr>
+      <td>77524</td>
+      <td>675</td>
+      <td>303</td>
+      <td>5</td>
+      <td>1998-03-10 00:08:42</td>
+    </tr>
+    <tr>
+      <td>47367</td>
+      <td>675</td>
+      <td>305</td>
+      <td>4</td>
+      <td>1998-03-10 00:09:08</td>
+    </tr>
+    <tr>
+      <td>44300</td>
+      <td>675</td>
+      <td>306</td>
+      <td>5</td>
+      <td>1998-03-10 00:08:07</td>
+    </tr>
+    <tr>
+      <td>53730</td>
+      <td>675</td>
+      <td>311</td>
+      <td>3</td>
+      <td>1998-03-10 00:10:47</td>
+    </tr>
+    <tr>
+      <td>54284</td>
+      <td>675</td>
+      <td>312</td>
+      <td>2</td>
+      <td>1998-03-10 00:10:24</td>
+    </tr>
+    <tr>
+      <td>63291</td>
+      <td>675</td>
+      <td>318</td>
+      <td>5</td>
+      <td>1998-03-10 00:21:13</td>
+    </tr>
+    <tr>
+      <td>87082</td>
+      <td>675</td>
+      <td>321</td>
+      <td>2</td>
+      <td>1998-03-10 00:11:48</td>
+    </tr>
+    <tr>
+      <td>56108</td>
+      <td>675</td>
+      <td>344</td>
+      <td>4</td>
+      <td>1998-03-10 00:12:34</td>
+    </tr>
+    <tr>
+      <td>53046</td>
+      <td>675</td>
+      <td>347</td>
+      <td>4</td>
+      <td>1998-03-10 00:07:11</td>
+    </tr>
+    <tr>
+      <td>94617</td>
+      <td>675</td>
+      <td>427</td>
+      <td>5</td>
+      <td>1998-03-10 00:28:11</td>
+    </tr>
+    <tr>
+      <td>69915</td>
+      <td>675</td>
+      <td>463</td>
+      <td>5</td>
+      <td>1998-03-10 00:16:43</td>
+    </tr>
+    <tr>
+      <td>46744</td>
+      <td>675</td>
+      <td>509</td>
+      <td>5</td>
+      <td>1998-03-10 00:24:25</td>
+    </tr>
+    <tr>
+      <td>46598</td>
+      <td>675</td>
+      <td>531</td>
+      <td>5</td>
+      <td>1998-03-10 00:18:28</td>
+    </tr>
+    <tr>
+      <td>52962</td>
+      <td>675</td>
+      <td>650</td>
+      <td>5</td>
+      <td>1998-03-10 00:32:51</td>
+    </tr>
+    <tr>
+      <td>94029</td>
+      <td>675</td>
+      <td>750</td>
+      <td>4</td>
+      <td>1998-03-10 00:08:07</td>
+    </tr>
+    <tr>
+      <td>53223</td>
+      <td>675</td>
+      <td>874</td>
+      <td>4</td>
+      <td>1998-03-10 00:11:19</td>
+    </tr>
+    <tr>
+      <td>62277</td>
+      <td>675</td>
+      <td>891</td>
+      <td>2</td>
+      <td>1998-03-10 00:12:59</td>
+    </tr>
+    <tr>
+      <td>77274</td>
+      <td>675</td>
+      <td>896</td>
+      <td>5</td>
+      <td>1998-03-10 00:09:35</td>
+    </tr>
+    <tr>
+      <td>66194</td>
+      <td>675</td>
+      <td>900</td>
+      <td>4</td>
+      <td>1998-03-10 00:10:24</td>
+    </tr>
+    <tr>
+      <td>54994</td>
+      <td>675</td>
+      <td>937</td>
+      <td>1</td>
+      <td>1998-03-10 00:35:51</td>
+    </tr>
+    <tr>
+      <td>61742</td>
+      <td>675</td>
+      <td>1007</td>
+      <td>4</td>
+      <td>1998-03-10 00:25:22</td>
+    </tr>
+    <tr>
+      <td>49225</td>
+      <td>675</td>
+      <td>1101</td>
+      <td>4</td>
+      <td>1998-03-10 00:33:49</td>
+    </tr>
+    <tr>
+      <td>50692</td>
+      <td>675</td>
+      <td>1255</td>
+      <td>1</td>
+      <td>1998-03-10 00:35:51</td>
+    </tr>
+    <tr>
+      <td>74202</td>
+      <td>675</td>
+      <td>1628</td>
+      <td>5</td>
+      <td>1998-03-10 00:30:37</td>
+    </tr>
+    <tr>
+      <td>47866</td>
+      <td>675</td>
+      <td>1653</td>
+      <td>5</td>
+      <td>1998-03-10 00:31:53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Not all reviews are favourable! Our goal is "other recommended books", so we only want favourable reviews</span></span><br><span class="line">all_ratings[<span class="string">"Favorable"</span>] = all_ratings[<span class="string">"Rating"</span>] &gt; <span class="number">3</span></span><br><span class="line">all_ratings[<span class="number">10</span>:<span class="number">15</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+      <th>Favorable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td>62</td>
+      <td>257</td>
+      <td>2</td>
+      <td>1997-11-12 22:07:14</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>286</td>
+      <td>1014</td>
+      <td>5</td>
+      <td>1997-11-17 15:38:45</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>200</td>
+      <td>222</td>
+      <td>5</td>
+      <td>1997-10-05 09:05:40</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>210</td>
+      <td>40</td>
+      <td>3</td>
+      <td>1998-03-27 21:59:54</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>224</td>
+      <td>29</td>
+      <td>3</td>
+      <td>1998-02-21 23:40:57</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_ratings[all_ratings[<span class="string">"UserID"</span>] == <span class="number">1</span>][:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+      <th>Favorable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>202</td>
+      <td>1</td>
+      <td>61</td>
+      <td>4</td>
+      <td>1997-11-03 07:33:40</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>305</td>
+      <td>1</td>
+      <td>189</td>
+      <td>3</td>
+      <td>1998-03-01 06:15:28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>333</td>
+      <td>1</td>
+      <td>33</td>
+      <td>4</td>
+      <td>1997-11-03 07:38:19</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>334</td>
+      <td>1</td>
+      <td>160</td>
+      <td>4</td>
+      <td>1997-09-24 03:42:27</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>478</td>
+      <td>1</td>
+      <td>20</td>
+      <td>4</td>
+      <td>1998-02-14 04:51:23</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sample the dataset. You can try increasing the size of the sample, but the run time will be considerably longer</span></span><br><span class="line">ratings = all_ratings[all_ratings[<span class="string">'UserID'</span>].isin(range(<span class="number">200</span>))]  <span class="comment"># &amp; ratings["UserID"].isin(range(100))]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ratings.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>(19531, 5)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ratings.head()</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+      <th>Favorable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>196</td>
+      <td>242</td>
+      <td>3</td>
+      <td>1997-12-04 15:55:49</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>186</td>
+      <td>302</td>
+      <td>3</td>
+      <td>1998-04-04 19:22:22</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>22</td>
+      <td>377</td>
+      <td>1</td>
+      <td>1997-11-07 07:18:36</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>166</td>
+      <td>346</td>
+      <td>1</td>
+      <td>1998-02-02 05:33:16</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>115</td>
+      <td>265</td>
+      <td>2</td>
+      <td>1997-12-03 17:51:28</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We start by creating a dataset of each user's favourable reviews</span></span><br><span class="line">favorable_ratings = ratings[ratings[<span class="string">"Favorable"</span>]] </span><br><span class="line">favorable_ratings[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+      <th>Favorable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>16</td>
+      <td>122</td>
+      <td>387</td>
+      <td>5</td>
+      <td>1997-11-11 17:47:39</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>119</td>
+      <td>392</td>
+      <td>4</td>
+      <td>1998-01-30 16:13:34</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>167</td>
+      <td>486</td>
+      <td>4</td>
+      <td>1998-04-16 14:54:12</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>38</td>
+      <td>95</td>
+      <td>5</td>
+      <td>1998-04-13 01:14:54</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>63</td>
+      <td>277</td>
+      <td>4</td>
+      <td>1997-10-01 23:10:01</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<ul>
+<li>根据用户分类</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We are only interested in the reviewers who have more than one review</span></span><br><span class="line">favorable_reviews_by_users = dict((k, frozenset(v.values)) <span class="keyword">for</span> k, v <span class="keyword">in</span> favorable_ratings.groupby(<span class="string">"UserID"</span>)[<span class="string">"MovieID"</span>])</span><br><span class="line">len(favorable_reviews_by_users)</span><br></pre></td></tr></table></figure>
+
+<pre><code>199</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">favorable_reviews_by_users[<span class="number">122</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>frozenset({28,
+           46,
+           70,
+           83,
+           86,
+           127,
+           135,
+           175,
+           180,
+           187,
+           190,
+           191,
+           193,
+           197,
+           212,
+           215,
+           239,
+           269,
+           378,
+           387,
+           403,
+           423,
+           464,
+           469,
+           509,
+           510,
+           511,
+           513,
+           519,
+           582,
+           661,
+           699,
+           708,
+           715,
+           724,
+           727,
+           736,
+           737,
+           956,
+           1044,
+           1045,
+           1074,
+           1113,
+           1168,
+           1267})</code></pre><ul>
+<li>frozenset不可变集合</li>
+<li>set可变集合</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?frozenset</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>各个电影的喜爱数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_favorable_by_movie = ratings[[<span class="string">'MovieID'</span>,<span class="string">'Favorable'</span>]].groupby(<span class="string">'MovieID'</span>).sum()</span><br><span class="line">num_favorable_by_movie.sort_values(<span class="string">'Favorable'</span>,ascending = <span class="literal">False</span>)[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Favorable</th>
+    </tr>
+    <tr>
+      <th>MovieID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>50</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>89.0</td>
+    </tr>
+    <tr>
+      <td>258</td>
+      <td>83.0</td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>79.0</td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>70.0</td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>70.0</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>66.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find out how many movies have favourable ratings</span></span><br><span class="line">num_favorable_by_movie = ratings[[<span class="string">"MovieID"</span>, <span class="string">"Favorable"</span>]].groupby(<span class="string">"MovieID"</span>).sum()</span><br><span class="line">num_favorable_by_movie.sort_values(<span class="string">"Favorable"</span>, ascending=<span class="literal">False</span>)[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Favorable</th>
+    </tr>
+    <tr>
+      <th>MovieID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>50</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>89.0</td>
+    </tr>
+    <tr>
+      <td>258</td>
+      <td>83.0</td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>79.0</td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>74.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">s = [(<span class="string">'red'</span>, <span class="number">1</span>), (<span class="string">'blue'</span>, <span class="number">2</span>), (<span class="string">'red'</span>, <span class="number">3</span>), (<span class="string">'blue'</span>, <span class="number">4</span>), (<span class="string">'red'</span>, <span class="number">1</span>), (<span class="string">'blue'</span>, <span class="number">4</span>)]</span><br><span class="line">d = defaultdict(set)</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> s:</span><br><span class="line">    d[k].add(v)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items())</span><br></pre></td></tr></table></figure>
+
+<pre><code>[(&apos;blue&apos;, {2, 4}), (&apos;red&apos;, {1, 3})]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_frequent_itemsets</span><span class="params">(favorable_reviews_by_users, k_1_itemsets, min_support)</span>:</span></span><br><span class="line">    counts = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> user, reviews <span class="keyword">in</span> favorable_reviews_by_users.items():</span><br><span class="line">        <span class="keyword">for</span> itemset <span class="keyword">in</span> k_1_itemsets:</span><br><span class="line">            <span class="keyword">if</span> itemset.issubset(reviews):</span><br><span class="line">                <span class="keyword">for</span> other_reviewed_movie <span class="keyword">in</span> reviews - itemset:</span><br><span class="line">                    current_superset = itemset | frozenset((other_reviewed_movie,))</span><br><span class="line">                    counts[current_superset] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> dict([(itemset, frequency) <span class="keyword">for</span> itemset, frequency <span class="keyword">in</span> counts.items() <span class="keyword">if</span> frequency &gt;= min_support])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">frequent_itemsets = &#123;&#125;  <span class="comment"># itemsets are sorted by length</span></span><br><span class="line">min_support = <span class="number">50</span></span><br><span class="line">frequent_itemsets[<span class="number">1</span>] = dict((frozenset((movie_id,)), row[<span class="string">"Favorable"</span>])</span><br><span class="line">                                <span class="keyword">for</span> movie_id, row <span class="keyword">in</span> num_favorable_by_movie.iterrows()</span><br><span class="line">                                <span class="keyword">if</span> row[<span class="string">"Favorable"</span>] &gt; min_support)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frequent_itemsets[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>{frozenset({1}): 66.0,
+ frozenset({7}): 67.0,
+ frozenset({9}): 53.0,
+ frozenset({50}): 100.0,
+ frozenset({56}): 67.0,
+ frozenset({64}): 58.0,
+ frozenset({79}): 58.0,
+ frozenset({98}): 70.0,
+ frozenset({100}): 89.0,
+ frozenset({127}): 70.0,
+ frozenset({172}): 59.0,
+ frozenset({174}): 74.0,
+ frozenset({181}): 79.0,
+ frozenset({258}): 83.0,
+ frozenset({286}): 59.0,
+ frozenset({313}): 60.0}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">frequent_itemsets = &#123;&#125;  <span class="comment"># itemsets are sorted by length</span></span><br><span class="line">min_support = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># k=1 candidates are the isbns with more than min_support favourable reviews</span></span><br><span class="line">frequent_itemsets[<span class="number">1</span>] = dict((frozenset((movie_id,)), row[<span class="string">"Favorable"</span>])</span><br><span class="line">                                <span class="keyword">for</span> movie_id, row <span class="keyword">in</span> num_favorable_by_movie.iterrows()</span><br><span class="line">                                <span class="keyword">if</span> row[<span class="string">"Favorable"</span>] &gt; min_support)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"There are &#123;&#125; movies with more than &#123;&#125; favorable reviews"</span>.format(len(frequent_itemsets[<span class="number">1</span>]), min_support))</span><br><span class="line">sys.stdout.flush()</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">20</span>):</span><br><span class="line">    <span class="comment"># Generate candidates of length k, using the frequent itemsets of length k-1</span></span><br><span class="line">    <span class="comment"># Only store the frequent itemsets</span></span><br><span class="line">    cur_frequent_itemsets = find_frequent_itemsets(favorable_reviews_by_users, frequent_itemsets[k<span class="number">-1</span>],</span><br><span class="line">                                                   min_support)</span><br><span class="line">    <span class="keyword">if</span> len(cur_frequent_itemsets) == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">"Did not find any frequent itemsets of length &#123;&#125;"</span>.format(k))</span><br><span class="line">        sys.stdout.flush()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"I found &#123;&#125; frequent itemsets of length &#123;&#125;"</span>.format(len(cur_frequent_itemsets), k))</span><br><span class="line">        <span class="comment">#print(cur_frequent_itemsets)</span></span><br><span class="line">        sys.stdout.flush()</span><br><span class="line">        frequent_itemsets[k] = cur_frequent_itemsets</span><br><span class="line"><span class="comment"># We aren't interested in the itemsets of length 1, so remove those</span></span><br><span class="line"><span class="keyword">del</span> frequent_itemsets[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>There are 16 movies with more than 50 favorable reviews
+I found 93 frequent itemsets of length 2
+I found 295 frequent itemsets of length 3
+I found 593 frequent itemsets of length 4
+I found 785 frequent itemsets of length 5
+I found 677 frequent itemsets of length 6
+I found 373 frequent itemsets of length 7
+I found 126 frequent itemsets of length 8
+I found 24 frequent itemsets of length 9
+I found 2 frequent itemsets of length 10
+Did not find any frequent itemsets of length 11</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Found a total of &#123;0&#125; frequent itemsets"</span>.format(sum(len(itemsets) <span class="keyword">for</span> itemsets <span class="keyword">in</span> frequent_itemsets.values())))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Found a total of 2968 frequent itemsets</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Now we create the association rules. First, they are candidates until the confidence has been tested</span></span><br><span class="line">candidate_rules = []</span><br><span class="line"><span class="keyword">for</span> itemset_length, itemset_counts <span class="keyword">in</span> frequent_itemsets.items():</span><br><span class="line">    <span class="keyword">for</span> itemset <span class="keyword">in</span> itemset_counts.keys():</span><br><span class="line">        <span class="keyword">for</span> conclusion <span class="keyword">in</span> itemset:</span><br><span class="line">            premise = itemset - set((conclusion,))</span><br><span class="line">            candidate_rules.append((premise, conclusion))</span><br><span class="line">print(<span class="string">"There are &#123;&#125; candidate rules"</span>.format(len(candidate_rules)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>There are 15285 candidate rules</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(candidate_rules[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[(frozenset({7}), 1), (frozenset({1}), 7), (frozenset({50}), 1), (frozenset({1}), 50), (frozenset({1}), 56)]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Now, we compute the confidence of each of these rules. This is very similar to what we did in chapter 1</span></span><br><span class="line">correct_counts = defaultdict(int)</span><br><span class="line">incorrect_counts = defaultdict(int)</span><br><span class="line"><span class="keyword">for</span> user, reviews <span class="keyword">in</span> favorable_reviews_by_users.items():</span><br><span class="line">    <span class="keyword">for</span> candidate_rule <span class="keyword">in</span> candidate_rules:</span><br><span class="line">        premise, conclusion = candidate_rule</span><br><span class="line">        <span class="keyword">if</span> premise.issubset(reviews):</span><br><span class="line">            <span class="keyword">if</span> conclusion <span class="keyword">in</span> reviews:</span><br><span class="line">                correct_counts[candidate_rule] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                incorrect_counts[candidate_rule] += <span class="number">1</span></span><br><span class="line">rule_confidence = &#123;candidate_rule: correct_counts[candidate_rule] / float(correct_counts[candidate_rule] + incorrect_counts[candidate_rule])</span><br><span class="line">              <span class="keyword">for</span> candidate_rule <span class="keyword">in</span> candidate_rules&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Choose only rules above a minimum confidence level</span></span><br><span class="line">min_confidence = <span class="number">0.9</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Filter out the rules with poor confidence</span></span><br><span class="line">rule_confidence = &#123;rule: confidence <span class="keyword">for</span> rule, confidence <span class="keyword">in</span> rule_confidence.items() <span class="keyword">if</span> confidence &gt; min_confidence&#125;</span><br><span class="line">print(len(rule_confidence))</span><br></pre></td></tr></table></figure>
+
+<pre><code>5152</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line">sorted_confidence = sorted(rule_confidence.items(), key=itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(<span class="string">"Rule #&#123;0&#125;"</span>.format(index + <span class="number">1</span>))</span><br><span class="line">    (premise, conclusion) = sorted_confidence[index][<span class="number">0</span>]</span><br><span class="line">    print(<span class="string">"Rule: If a person recommends &#123;0&#125; they will also recommend &#123;1&#125;"</span>.format(premise, conclusion))</span><br><span class="line">    print(<span class="string">" - Confidence: &#123;0:.3f&#125;"</span>.format(rule_confidence[(premise, conclusion)]))</span><br><span class="line">    print(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Rule #1
+Rule: If a person recommends frozenset({98, 181}) they will also recommend 50
+ - Confidence: 1.000
+
+Rule #2
+Rule: If a person recommends frozenset({172, 79}) they will also recommend 174
+ - Confidence: 1.000
+
+Rule #3
+Rule: If a person recommends frozenset({258, 172}) they will also recommend 174
+ - Confidence: 1.000
+
+Rule #4
+Rule: If a person recommends frozenset({1, 181, 7}) they will also recommend 50
+ - Confidence: 1.000
+
+Rule #5
+Rule: If a person recommends frozenset({1, 172, 7}) they will also recommend 174
+ - Confidence: 1.000</code></pre><p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Even better, we can get the movie titles themselves from the dataset</span></span><br><span class="line">movie_name_filename = Path(<span class="string">'/'</span>).joinpath(Path.cwd(),<span class="string">'data/ml-100k/u.item'</span>)</span><br><span class="line">movie_name_data = pd.read_csv(movie_name_filename, delimiter=<span class="string">"|"</span>, header=<span class="literal">None</span>, encoding = <span class="string">"mac-roman"</span>)</span><br><span class="line">movie_name_data.columns = [<span class="string">"MovieID"</span>, <span class="string">"Title"</span>, <span class="string">"Release Date"</span>, <span class="string">"Video Release"</span>, <span class="string">"IMDB"</span>, <span class="string">"&lt;UNK&gt;"</span>, <span class="string">"Action"</span>, <span class="string">"Adventure"</span>,</span><br><span class="line">                           <span class="string">"Animation"</span>, <span class="string">"Children's"</span>, <span class="string">"Comedy"</span>, <span class="string">"Crime"</span>, <span class="string">"Documentary"</span>, <span class="string">"Drama"</span>, <span class="string">"Fantasy"</span>, <span class="string">"Film-Noir"</span>,</span><br><span class="line">                           <span class="string">"Horror"</span>, <span class="string">"Musical"</span>, <span class="string">"Mystery"</span>, <span class="string">"Romance"</span>, <span class="string">"Sci-Fi"</span>, <span class="string">"Thriller"</span>, <span class="string">"War"</span>, <span class="string">"Western"</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movie_name_data.head()</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MovieID</th>
+      <th>Title</th>
+      <th>Release Date</th>
+      <th>Video Release</th>
+      <th>IMDB</th>
+      <th>&lt;UNK&gt;</th>
+      <th>Action</th>
+      <th>Adventure</th>
+      <th>Animation</th>
+      <th>Children's</th>
+      <th>...</th>
+      <th>Fantasy</th>
+      <th>Film-Noir</th>
+      <th>Horror</th>
+      <th>Musical</th>
+      <th>Mystery</th>
+      <th>Romance</th>
+      <th>Sci-Fi</th>
+      <th>Thriller</th>
+      <th>War</th>
+      <th>Western</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>Toy Story (1995)</td>
+      <td>01-Jan-1995</td>
+      <td>NaN</td>
+      <td>http://us.imdb.com/M/title-exact?Toy%20Story%2...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>GoldenEye (1995)</td>
+      <td>01-Jan-1995</td>
+      <td>NaN</td>
+      <td>http://us.imdb.com/M/title-exact?GoldenEye%20(...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+      <td>Four Rooms (1995)</td>
+      <td>01-Jan-1995</td>
+      <td>NaN</td>
+      <td>http://us.imdb.com/M/title-exact?Four%20Rooms%...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>Get Shorty (1995)</td>
+      <td>01-Jan-1995</td>
+      <td>NaN</td>
+      <td>http://us.imdb.com/M/title-exact?Get%20Shorty%...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>Copycat (1995)</td>
+      <td>01-Jan-1995</td>
+      <td>NaN</td>
+      <td>http://us.imdb.com/M/title-exact?Copycat%20(1995)</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movie_name_data[movie_name_data[<span class="string">"MovieID"</span>] == <span class="number">80</span>][<span class="string">"Title"</span>].values[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;Hot Shots! Part Deux (1993)&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie_name</span><span class="params">(movie_id)</span>:</span></span><br><span class="line">    title_object = movie_name_data[movie_name_data[<span class="string">"MovieID"</span>] == movie_id][<span class="string">"Title"</span>]</span><br><span class="line">    title = title_object.values[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> title</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get_movie_name(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;Get Shorty (1995)&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(<span class="string">"Rule #&#123;0&#125;"</span>.format(index + <span class="number">1</span>))</span><br><span class="line">    (premise, conclusion) = sorted_confidence[index][<span class="number">0</span>]</span><br><span class="line">    premise_names = <span class="string">", "</span>.join(get_movie_name(idx) <span class="keyword">for</span> idx <span class="keyword">in</span> premise)</span><br><span class="line">    conclusion_name = get_movie_name(conclusion)</span><br><span class="line">    print(<span class="string">"Rule: If a person recommends &#123;0&#125; they will also recommend &#123;1&#125;"</span>.format(premise_names, conclusion_name))</span><br><span class="line">    print(<span class="string">" - Confidence: &#123;0:.3f&#125;"</span>.format(rule_confidence[(premise, conclusion)]))</span><br><span class="line">    print(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Rule #1
+Rule: If a person recommends Silence of the Lambs, The (1991), Return of the Jedi (1983) they will also recommend Star Wars (1977)
+ - Confidence: 1.000
+
+Rule #2
+Rule: If a person recommends Empire Strikes Back, The (1980), Fugitive, The (1993) they will also recommend Raiders of the Lost Ark (1981)
+ - Confidence: 1.000
+
+Rule #3
+Rule: If a person recommends Contact (1997), Empire Strikes Back, The (1980) they will also recommend Raiders of the Lost Ark (1981)
+ - Confidence: 1.000
+
+Rule #4
+Rule: If a person recommends Toy Story (1995), Return of the Jedi (1983), Twelve Monkeys (1995) they will also recommend Star Wars (1977)
+ - Confidence: 1.000
+
+Rule #5
+Rule: If a person recommends Toy Story (1995), Empire Strikes Back, The (1980), Twelve Monkeys (1995) they will also recommend Raiders of the Lost Ark (1981)
+ - Confidence: 1.000</code></pre><p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Evaluation using test data</span></span><br><span class="line">test_dataset = all_ratings[~all_ratings[<span class="string">'UserID'</span>].isin(range(<span class="number">200</span>))]</span><br><span class="line">test_favorable = test_dataset[test_dataset[<span class="string">"Favorable"</span>]]</span><br><span class="line"><span class="comment">#test_not_favourable = test_dataset[~test_dataset["Favourable"]]</span></span><br><span class="line">test_favorable_by_users = dict((k, frozenset(v.values)) <span class="keyword">for</span> k, v <span class="keyword">in</span> test_favorable.groupby(<span class="string">"UserID"</span>)[<span class="string">"MovieID"</span>])</span><br><span class="line"><span class="comment">#test_not_favourable_by_users = dict((k, frozenset(v.values)) for k, v in test_not_favourable.groupby("UserID")["MovieID"])</span></span><br><span class="line"><span class="comment">#test_users = test_dataset["UserID"].unique()</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_dataset[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UserID</th>
+      <th>MovieID</th>
+      <th>Rating</th>
+      <th>Datetime</th>
+      <th>Favorable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>244</td>
+      <td>51</td>
+      <td>2</td>
+      <td>1997-11-27 05:02:03</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>298</td>
+      <td>474</td>
+      <td>4</td>
+      <td>1998-01-07 14:20:06</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>253</td>
+      <td>465</td>
+      <td>5</td>
+      <td>1998-04-03 18:34:27</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>305</td>
+      <td>451</td>
+      <td>3</td>
+      <td>1998-02-01 09:20:17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>286</td>
+      <td>1014</td>
+      <td>5</td>
+      <td>1997-11-17 15:38:45</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">correct_counts = defaultdict(int)</span><br><span class="line">incorrect_counts = defaultdict(int)</span><br><span class="line"><span class="keyword">for</span> user, reviews <span class="keyword">in</span> test_favorable_by_users.items():</span><br><span class="line">    <span class="keyword">for</span> candidate_rule <span class="keyword">in</span> candidate_rules:</span><br><span class="line">        premise, conclusion = candidate_rule</span><br><span class="line">        <span class="keyword">if</span> premise.issubset(reviews):</span><br><span class="line">            <span class="keyword">if</span> conclusion <span class="keyword">in</span> reviews:</span><br><span class="line">                correct_counts[candidate_rule] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                incorrect_counts[candidate_rule] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_confidence = &#123;candidate_rule: correct_counts[candidate_rule] / float(correct_counts[candidate_rule] + incorrect_counts[candidate_rule])</span><br><span class="line">                   <span class="keyword">for</span> candidate_rule <span class="keyword">in</span> rule_confidence&#125;</span><br><span class="line">print(len(test_confidence))</span><br></pre></td></tr></table></figure>
+
+<pre><code>5152</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted_test_confidence = sorted(test_confidence.items(), key=itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br><span class="line">print(sorted_test_confidence[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[((frozenset({64, 1, 7, 79, 50}), 174), 1.0), ((frozenset({64, 1, 98, 7, 79}), 174), 1.0), ((frozenset({64, 1, 7, 172, 79}), 174), 1.0), ((frozenset({64, 1, 7, 79, 181}), 174), 1.0), ((frozenset({64, 1, 172, 79, 56}), 174), 1.0)]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">"Rule #&#123;0&#125;"</span>.format(index + <span class="number">1</span>))</span><br><span class="line">    (premise, conclusion) = sorted_confidence[index][<span class="number">0</span>]</span><br><span class="line">    premise_names = <span class="string">", "</span>.join(get_movie_name(idx) <span class="keyword">for</span> idx <span class="keyword">in</span> premise)</span><br><span class="line">    conclusion_name = get_movie_name(conclusion)</span><br><span class="line">    print(<span class="string">"Rule: If a person recommends &#123;0&#125; they will also recommend &#123;1&#125;"</span>.format(premise_names, conclusion_name))</span><br><span class="line">    print(<span class="string">" - Train Confidence: &#123;0:.3f&#125;"</span>.format(rule_confidence.get((premise, conclusion), <span class="number">-1</span>)))</span><br><span class="line">    print(<span class="string">" - Test Confidence: &#123;0:.3f&#125;"</span>.format(test_confidence.get((premise, conclusion), <span class="number">-1</span>)))</span><br><span class="line">    print(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Rule #1
+Rule: If a person recommends Silence of the Lambs, The (1991), Return of the Jedi (1983) they will also recommend Star Wars (1977)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.936
+
+Rule #2
+Rule: If a person recommends Empire Strikes Back, The (1980), Fugitive, The (1993) they will also recommend Raiders of the Lost Ark (1981)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.876
+
+Rule #3
+Rule: If a person recommends Contact (1997), Empire Strikes Back, The (1980) they will also recommend Raiders of the Lost Ark (1981)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.841
+
+Rule #4
+Rule: If a person recommends Toy Story (1995), Return of the Jedi (1983), Twelve Monkeys (1995) they will also recommend Star Wars (1977)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.932
+
+Rule #5
+Rule: If a person recommends Toy Story (1995), Empire Strikes Back, The (1980), Twelve Monkeys (1995) they will also recommend Raiders of the Lost Ark (1981)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.903
+
+Rule #6
+Rule: If a person recommends Pulp Fiction (1994), Toy Story (1995), Star Wars (1977) they will also recommend Raiders of the Lost Ark (1981)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.816
+
+Rule #7
+Rule: If a person recommends Pulp Fiction (1994), Toy Story (1995), Return of the Jedi (1983) they will also recommend Star Wars (1977)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.970
+
+Rule #8
+Rule: If a person recommends Toy Story (1995), Silence of the Lambs, The (1991), Return of the Jedi (1983) they will also recommend Star Wars (1977)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.933
+
+Rule #9
+Rule: If a person recommends Toy Story (1995), Empire Strikes Back, The (1980), Return of the Jedi (1983) they will also recommend Star Wars (1977)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.971
+
+Rule #10
+Rule: If a person recommends Pulp Fiction (1994), Toy Story (1995), Shawshank Redemption, The (1994) they will also recommend Silence of the Lambs, The (1991)
+ - Train Confidence: 1.000
+ - Test Confidence: 0.794</code></pre><p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/数据挖掘/" rel="tag"># 数据挖掘</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/Altair的使用学习/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+
+<% if(theme.gitment.enable) { %>
+<div id="gitment_title" class="gitment_title"></div>
+<div id="container" style="display:none"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: decodeURI(window.location.pathname),
+      theme: myTheme,
+      owner: 'Childish1jin',
+      repo: 'Childish1jin.github.io',
+      oauth: {
+        client_id: '89b78712c0406690e89a',
+        client_secret: '7a1f1201723900ccd24fee6d3df54781b80904ff'
+      }
+    });
+    gitment.render('container');
+  }
+
+  showGitment();
+</script>
+<% } %>
+
+        </%></%></div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Barry Wang</p>
+              <div class="site-description motion-element" itemprop="description">run barry, run!</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Barry Wang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
